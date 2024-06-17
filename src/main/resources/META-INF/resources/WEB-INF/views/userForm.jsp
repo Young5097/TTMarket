@@ -21,27 +21,38 @@
               action="signup">
                 <div>
                     <label for="userid">userid:</label>
+                    <form:input type="text" path="userid"/>
                 </div>
                 <div>
                     <label for="password">passwd:</label>
+                    <form:input type="text" path="passwd"/>
                 </div>
                 <div>
                     <label for="email">email:</label>
+                    <form:input type="text" path="email"/>
                 </div>
                  <div>
                     <label for="userName">userName:</label>
+                    <form:input type="text" path="userName" />
                 </div>
                 <div>
                     <label for="userNickName">userNickName:</label>
+                    <form:input type="text" path="userNickName" />
+                </div>
+                <div>
+                    <label for="phoneNum">phoneNum:</label>
+                    <form:input type="text" path="phoneNum" />
                 </div>
                 <div>
                     <label for="userAddress1">userAddress1:</label>
+                    <form:input type="text" path="userAddress1"/>
                 </div>
                 <div>
                     <label for="userAddress2">userAddress2:</label>
+                    <form:input type="text" path="userAddress2"/>
                 </div>
                 <div>
-                    <button name="login" class="btn btn-success m-5" >회원가입</button>
+                    <button class="btn btn-success m-5">회원가입</button>
                 </div>
                </form:form> 
             </div>

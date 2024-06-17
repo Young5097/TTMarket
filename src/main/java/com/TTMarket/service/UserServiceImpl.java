@@ -1,8 +1,13 @@
 package com.TTMarket.service;
 
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.TTMarket.dto.UserDTO;
 import com.TTMarket.mapper.UserMapper;
 
+@Service
+@Transactional
 public class UserServiceImpl implements UserService {
 	
 	UserMapper userMapper;
@@ -13,8 +18,8 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public int save(UserDTO userDTO) {
-		int n = userMapper.save(userDTO);
-		return n;
+		return userMapper.save(userDTO);
+		
 	}
 
 }

@@ -2,10 +2,8 @@ package com.TTMarket.controller;
 
 import javax.validation.Valid;
 
-import org.apache.catalina.realm.JNDIRealm.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -32,15 +30,21 @@ public class UserController {
 		return "userForm";
 	}
 	
-	@PostMapping(value={"/signup"})
+	@PostMapping("/signup")
 	public String showSignUpSuccessPage(@Valid UserDTO userDTO, 
 			BindingResult result) {
-		logger.debug("logger:{}", userDTO);
-		
+		logger.info("logger:{}", userDTO);
 		if(result.hasErrors()) {
-			return "memberForm";
+			return "userForm";
 		}
-
+		
+//		//서비스 연동
+//		// 비번 암호화 필수
+//		String encptPw = 
+//				new BCryptPasswordEncoder().encode(member.getPasswd());
+//		member.setPasswd(encptPw);
+	
+		int n = userService.save(userDTO);
 		return "redirect:";
 	}
 }

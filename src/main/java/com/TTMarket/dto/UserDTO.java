@@ -4,14 +4,14 @@ import org.apache.ibatis.type.Alias;
 
 @Alias("UserDTO")
 public class UserDTO {
-	String userName;
-	String phoneNum;
-	String userNickName;
-	String userAddress1;
-	String userAddress2;
-	String userid;
-	String passwd;
-	String email;
+    private String userName;
+    private String phoneNum;
+    private String userNickname;
+    private String userAddress1;
+    private String userAddress2;
+    private String userid;
+    private String passwd;
+    private String email;
 	
 	public UserDTO() {}
 
@@ -19,7 +19,7 @@ public class UserDTO {
 			String userid, String passwd, String email) {
 		this.userName = userName;
 		this.phoneNum = phoneNum;
-		this.userNickName = userNickName;
+		this.userNickname = userNickName;
 		this.userAddress1 = userAddress1;
 		this.userAddress2 = userAddress2;
 		this.userid = userid;
@@ -44,11 +44,11 @@ public class UserDTO {
 	}
 
 	public String getUserNickName() {
-		return userNickName;
+		return userNickname;
 	}
 
 	public void setUserNickName(String userNickName) {
-		this.userNickName = userNickName;
+		this.userNickname = userNickName;
 	}
 
 	public String getUserAddress1() {
@@ -93,7 +93,7 @@ public class UserDTO {
 
 	@Override
 	public String toString() {
-		return "UserDTO [userName=" + userName + ", phoneNum=" + phoneNum + ", userNickName=" + userNickName
+		return "UserDTO [userName=" + userName + ", phoneNum=" + phoneNum + ", userNickName=" + userNickname
 				+ ", userAddress1=" + userAddress1 + ", userAddress2=" + userAddress2 + ", userid=" + userid
 				+ ", passwd=" + passwd + ", email=" + email + "]";
 	}
