@@ -31,7 +31,7 @@
                     </div>
                     <div class="d-flex justify-content-center">
                         <button type="submit" class="btn btn-primary me-2">로그인</button>
-                        <button type="submit" class="btn btn-primary me-2">회원가입</button> <!-- 회원가입 버튼을 secondary로 변경 -->
+                        <a class="btn btn-primary me-2" href="signup">회원가입</a> <!-- 회원가입 버튼을 secondary로 변경 -->
                     </div>
                 </form>
             </div>
