@@ -13,7 +13,12 @@
         		#{userAddress1},#{userAddress2},
         		#{userid},#{passwd},#{email} )
      </insert>
- 
+ 	
+ 	<select id="findById" parameterType="string" resultType="UserDTO">
+		select userid, passwd, username
+		from user
+		where userid=#{userid}
+	</select>
 </mapper>
 
 

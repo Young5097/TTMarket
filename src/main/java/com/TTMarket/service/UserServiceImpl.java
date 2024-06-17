@@ -22,4 +22,9 @@ public class UserServiceImpl implements UserService {
 		
 	}
 
+	@Override
+	public UserDTO findById(String userid) {
+		return userMapper.findById(userid);
+	}
+
 }
