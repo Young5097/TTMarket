@@ -11,7 +11,12 @@
                         <h5 class="card-title">${dto.pName}</h5>
                         <p class="card-text">${dto.pCategory}</p>
                         <p class="card-text">${dto.pLocation}</p>
-                        <p class="card-text">${dto.pIsTransaction}</p>
+                        <p class="card-text">
+                        	<c:choose>
+                        		<c:when test="${dto.pIsTransaction}"><c:out value="판매완료"></c:out></c:when>
+                        		<c:when test="${!dto.pIsTransaction}"><c:out value="판매중"></c:out></c:when>
+                        	</c:choose>
+                        </p>
                         <a href="#" class="btn btn-primary">상세 보기</a>
                     </div>
                 </div>

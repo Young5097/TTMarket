@@ -2,6 +2,7 @@ package com.TTMarket.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +11,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.TTMarket.dto.ProductDTO;
@@ -21,6 +21,7 @@ public class EnrollProductController {
     Logger logger = LoggerFactory.getLogger(getClass());
 
     ProductService productService;
+    Date date;
 
     public EnrollProductController(ProductService productService) {
         this.productService = productService;
@@ -35,15 +36,15 @@ public class EnrollProductController {
     @PostMapping("/enrollProduct")
     public  String enrollProductComplete(ProductDTO productDTO,
                                          BindingResult result) {
-
-        logger.info(productDTO.toString());
-        
         if (result.hasErrors()) {
             return "enrollProduct";
         }
         
+        // 업로드날짜 설정
+        productDTO.setpDate(new Date());
+        
+        // 이미지파일 업로드 및 파일명 DB저장
         MultipartFile file = productDTO.getMultipartFile();
-        System.out.println(file);
         if(!file.isEmpty()) {
         	String filename = file.getOriginalFilename();
         	logger.info(filename);
