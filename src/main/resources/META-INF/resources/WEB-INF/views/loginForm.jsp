@@ -8,7 +8,7 @@
 </head>
 
 <body>
-<div class="d-flex justify-content-center align-items-center vh-100">
+<div class="d-flex justify-content-center align-items-center">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">

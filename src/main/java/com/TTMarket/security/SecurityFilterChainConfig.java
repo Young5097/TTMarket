@@ -25,10 +25,9 @@ public class SecurityFilterChainConfig {
 		    .failureForwardUrl("/login_fail")        // 로그인 실패시 리다이렉트되는 요청맵핑값 
 		    .defaultSuccessUrl("/login_success", true); // 로그인 성공시 리다이렉트되는 요청맵핑값
 
-		 //4. 로그아웃 관련 작업
-		// http.logout()
-		//     .logoutUrl("/logout")   // security가 자동으로 로그아웃 처리해주는 요청맵핑값
-		//     .logoutSuccessUrl("/home");  // logout 성공시 리다이렉트 되는 요청맵핑값
+		 http.logout()
+		     .logoutUrl("/logout")   // security가 자동으로 로그아웃 처리해주는 요청맵핑값
+		     .logoutSuccessUrl("/");  // logout 성공시 리다이렉트 되는 요청맵핑값
 		     
 		return http.build();
 	}

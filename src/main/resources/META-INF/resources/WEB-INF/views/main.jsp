@@ -6,27 +6,43 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-    .App {
-	  text-align: center;
-	  font-size: 20px;
-	}
-	
-    label, input, button {
-    margin: 10px;
-    padding: 5px;
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
     }
 
-	footer {
-	    bottom: 0;
-	    position: absolute;
-	    width: 90%;
-	    height: 40px;
-	}
- </style>
-<link href="webjars/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet" >
+    body {
+        display: flex;
+        justify-content: center;
+    }
+
+    .App {
+        text-align: center;
+        font-size: 20px;
+        width: 800px;
+    }
+
+    label, input, button {
+        margin: 10px;
+        padding: 5px;
+    }
+
+    footer {
+        bottom: 0;
+        position: absolute;
+        width: 90%;
+        height: 40px;
+    }
+</style>
+<link rel="stylesheet" href="webjars/bootstrap/5.1.3/css/bootstrap.min.css">
+<script src="webjars/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
-	<h2>main.jsp</h2>
+<div class="App">
+    <jsp:include page="common/top.jsp" flush="true" />
+    <jsp:include page="common/menu.jsp" flush="true" />
+    <jsp:include page="products/productsList.jsp" flush="true" />
+</div>
 </body>
 </html>
-
