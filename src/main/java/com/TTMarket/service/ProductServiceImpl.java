@@ -20,4 +20,9 @@ public class ProductServiceImpl implements ProductService {
 		return productMapper.productList();
 	}
 
+	@Override
+	public int enrollProduct(ProductDTO productDTO) {
+		return productMapper.enrollProduct(productDTO);
+	}
+
 }

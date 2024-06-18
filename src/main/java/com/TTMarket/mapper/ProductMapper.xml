@@ -11,6 +11,16 @@
 		from product
 		order by product_num desc
 	</select>
+	
+	<insert id="enrollProduct" parameterType="ProductDTO">
+		INSERT INTO 
+		product (pName, pCategory, pPrice,
+				 userNickname, pLocation, pDate,
+				 pIsTransaction, pImage, pExplain) 
+		VALUES (#{pName},#{pCategory},#{pPrice},
+				#{userNickname},#{pLocation},#{pDate},
+				#{pIsTransaction},#{pImage},#{pExplain});
+	</insert>
 </mapper>
 
 

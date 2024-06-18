@@ -9,4 +9,5 @@ import com.TTMarket.dto.ProductDTO;
 @Mapper
 public interface ProductMapper {
 	public List<ProductDTO> productList();
+	public int enrollProduct(ProductDTO productDTO);
 }

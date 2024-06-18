@@ -3,6 +3,7 @@ package com.TTMarket.dto;
 import java.util.Date;
 
 import org.apache.ibatis.type.Alias;
+import org.springframework.web.multipart.MultipartFile;
 
 @Alias("ProductDTO")
 public class ProductDTO {
@@ -14,11 +15,14 @@ public class ProductDTO {
 	private Date pDate; // 등록일자
 	private String pIsTransaction; // 거래여부
 	private String pImage;
+	private String pExplain;
+	
+	private MultipartFile multipartFile;
 	
 	public ProductDTO() {}
 	
 	public ProductDTO(String pName, String pCategory, int pPrice, String userNickname, String pLocation, Date pDate,
-			String pIsTransaction, String pImage) {
+			String pIsTransaction, String pImage, String pExplain, MultipartFile multipartFile) {
 		this.pName = pName;
 		this.pCategory = pCategory;
 		this.pPrice = pPrice;
@@ -27,6 +31,16 @@ public class ProductDTO {
 		this.pDate = pDate;
 		this.pIsTransaction = pIsTransaction;
 		this.pImage = pImage;
+		this.pExplain=pExplain;
+		this.multipartFile = multipartFile;
+	}
+
+	public String getpExplain() {
+		return pExplain;
+	}
+
+	public void setpExplain(String pExplain) {
+		this.pExplain = pExplain;
 	}
 
 	public String getpName() {
@@ -92,6 +106,23 @@ public class ProductDTO {
 	public void setpImage(String pImage) {
 		this.pImage = pImage;
 	}
+
+	public MultipartFile getMultipartFile() {
+		return multipartFile;
+	}
+
+	public void setMultipartFile(MultipartFile multipartFile) {
+		this.multipartFile = multipartFile;
+	}
+
+	@Override
+	public String toString() {
+		return "ProductDTO [pName=" + pName + ", pCategory=" + pCategory + ", pPrice=" + pPrice + ", userNickname="
+				+ userNickname + ", pLocation=" + pLocation + ", pDate=" + pDate + ", pIsTransaction=" + pIsTransaction
+				+ ", pImage=" + pImage + ", pExplain=" + pExplain + ", multipartfile=" + multipartFile + "]";
+	}
+
+	
 
 	
 }

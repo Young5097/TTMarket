@@ -6,4 +6,5 @@ import com.TTMarket.dto.ProductDTO;
 
 public interface ProductService {
 	public List<ProductDTO> productList();
+	public int enrollProduct(ProductDTO productDTO);
 }
