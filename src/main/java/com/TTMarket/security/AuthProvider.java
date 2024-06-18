@@ -17,7 +17,6 @@ import org.springframework.stereotype.Component;
 import com.TTMarket.dto.UserDTO;
 import com.TTMarket.service.UserService;
 
-
 @Component
 public class AuthProvider implements AuthenticationProvider {
 	@Autowired
