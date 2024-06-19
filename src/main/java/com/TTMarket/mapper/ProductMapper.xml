@@ -6,8 +6,7 @@
 <mapper namespace="com.TTMarket.mapper.ProductMapper">
 
  	<select id="productList" resultType="ProductDTO">
-		select pName, pCategory, pPrice, userNickName, 
-			   pLocation, pDate, pIsTransaction, pImage
+		select *
 		from product
 		where pIsTransaction=false
 		order by product_num desc
