@@ -22,7 +22,7 @@ public class SecurityFilterChainConfig {
 		    .usernameParameter("userid")    // <input name="userid">
 		    .passwordParameter("passwd")       // <input name="passwd">
 		    .failureForwardUrl("/login_fail")        // 로그인 실패시 리다이렉트되는 요청맵핑값 
-		    .defaultSuccessUrl("/main"); // 로그인 성공시 리다이렉트되는 요청맵핑값
+		    .defaultSuccessUrl("/login_success", true); // 로그인 성공시 리다이렉트되는 요청맵핑값
 
 		 http.logout()
 		     .logoutUrl("/logout")   // security가 자동으로 로그아웃 처리해주는 요청맵핑값

@@ -26,7 +26,7 @@ public class MainController {
 	@GetMapping("/main")
 	public String main(ModelMap model) {
 		List<ProductDTO> productList = productService.productList();
-		logger.info(productList.toString());
+//		logger.info(productList.toString());
 		model.addAttribute("productList", productList);
 		return "main";
 	}

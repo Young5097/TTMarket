@@ -13,7 +13,7 @@ public class ProductDTO {
 	private String userNickname; // 유저 닉네임
 	private String pLocation; // 거래위치
 	private Date pDate; // 등록일자
-	private boolean pIsTransaction=false; // 거래여부
+	private boolean pIsTransaction; // 거래여부
 	private String pImage;
 	private String pExplain;
 	

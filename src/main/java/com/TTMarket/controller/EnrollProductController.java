@@ -11,20 +11,25 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.TTMarket.dto.ProductDTO;
 import com.TTMarket.service.ProductService;
+import com.TTMarket.service.UserService;
 
 @Controller
+@SessionAttributes(names = {"userid"})
 public class EnrollProductController {
     Logger logger = LoggerFactory.getLogger(getClass());
 
     ProductService productService;
-    Date date;
+    UserService userService;
 
-    public EnrollProductController(ProductService productService) {
+    public EnrollProductController(ProductService productService,
+    						       UserService userService) {
         this.productService = productService;
+        this.userService = userService;
     }
 
     @GetMapping("/enrollProduct")
@@ -35,13 +40,22 @@ public class EnrollProductController {
 
     @PostMapping("/enrollProduct")
     public  String enrollProductComplete(ProductDTO productDTO,
-                                         BindingResult result) {
+                                         BindingResult result,
+                                         ModelMap model) {
         if (result.hasErrors()) {
             return "enrollProduct";
         }
         
         // 업로드날짜 설정
         productDTO.setpDate(new Date());
+        
+        // 유저 닉네임 가져오기
+        String userid = (String) model.get("userid");
+        String userNickname = userService.findNicknameById(userid);
+        productDTO.setUserNickname(userNickname);
+        
+        // 거래여부 기본 false
+        productDTO.setpIsTransaction(false);
         
         // 이미지파일 업로드 및 파일명 DB저장
         MultipartFile file = productDTO.getMultipartFile();

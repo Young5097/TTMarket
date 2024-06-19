@@ -9,6 +9,7 @@
 		select pName, pCategory, pPrice, userNickName, 
 			   pLocation, pDate, pIsTransaction, pImage
 		from product
+		where pIsTransaction=false
 		order by product_num desc
 	</select>
 	

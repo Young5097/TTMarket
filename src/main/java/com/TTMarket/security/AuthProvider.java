@@ -27,9 +27,7 @@ public class AuthProvider implements AuthenticationProvider {
 		String userid = (String)authentication.getPrincipal(); // name="userid" 값
 		String passwd = (String)authentication.getCredentials(); // name="passwd" 값
 		
-		
 		UserDTO userDTO = userService.findById(userid); // 계정이없으면 null
-//		String encrptPw = mem.getPasswd(); // NullPointerException 발생되기 때문에 사용안됨
 		
 		//Authentication 하위클래스 => token은 실제 저장되는 데이터
 		//로그인 성공시
