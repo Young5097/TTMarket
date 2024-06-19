@@ -19,6 +19,12 @@
 		from user
 		where userid=#{userid}
 	</select>
+	
+	<select id="findNicknameById" parameterType="String" resultType="String">
+		select userNickname
+		from user
+		where userid=#{userid}
+	</select>
 </mapper>
 
 

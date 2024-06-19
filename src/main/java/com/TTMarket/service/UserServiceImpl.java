@@ -18,8 +18,7 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public int save(UserDTO userDTO) {
-		return userMapper.save(userDTO);
-		
+		return userMapper.save(userDTO);	
 	}
 
 	@Override
@@ -27,4 +26,8 @@ public class UserServiceImpl implements UserService {
 		return userMapper.findById(userid);
 	}
 
+	@Override
+	public String findNicknameById(String userid) {
+		return userMapper.findNicknameById(userid);
+	}
 }
