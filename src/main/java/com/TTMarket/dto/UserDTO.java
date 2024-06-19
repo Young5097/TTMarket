@@ -4,12 +4,19 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import java.util.Collection;
+
 import org.apache.ibatis.type.Alias;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @Alias("UserDTO")
 public class UserDTO {
 	
-	@NotEmpty(message = "이름 입력은 필수입니다.")
+	
+
+public class UserDTO implements UserDetails {
+    @NotEmpty(message = "이름 입력은 필수입니다.")
     private String userName;
 	
 	@NotEmpty(message = "전화번호 입력은 필수입니다.")
@@ -38,7 +45,7 @@ public class UserDTO {
     @NotEmpty(message = "이메일 입력은 필수입니다.")
     @Pattern(regexp = "^[a-zA-Z0-9+-\\_.]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$", message="이메일을 다시한번 확인해주세요.")
     private String email;
-	
+    
 	public UserDTO() {}
 
 	public UserDTO(String userName, String phoneNum, String userNickName, String userAddress1, String userAddress2,
@@ -142,5 +149,38 @@ public class UserDTO {
 	}
 
 
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return null;
+	}
 
+	@Override
+	public String getPassword() {
+		return this.passwd;
+	}
+
+	@Override
+	public String getUsername() {
+		return this.userid;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
 }

@@ -18,8 +18,7 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public int save(UserDTO userDTO) {
-		return userMapper.save(userDTO);
-		
+		return userMapper.save(userDTO);	
 	}
 
 	@Override
@@ -28,6 +27,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+
 	public UserDTO idCheck(String userid) {
 		// TODO Auto-generated method stub
 		return userMapper.idCheck(userid);
@@ -43,6 +43,10 @@ public class UserServiceImpl implements UserService {
 	public UserDTO phoneNumCheck(String phoneNum) {
 		// TODO Auto-generated method stub
 		return userMapper.phoneNumCheck(phoneNum);
+	}
+
+	public String findNicknameById(String userid) {
+		return userMapper.findNicknameById(userid);
 	}
 
 }

@@ -16,6 +16,12 @@ public class SecurityFilterChainConfig {
 		    .authenticated();
 		
 		// 로그인 작업		
+
+		    .antMatchers("/","/signup","/webjars/**")
+		    	.permitAll()
+		    .anyRequest().authenticated();
+		
+		
 		http.formLogin()     // 사용자가 만든 로그인화면으로 인증처리 하겠음.
 		    .loginPage("/") // 로그인 페이지로 갈수 있는 요청맵핑값 <a href="login">로그인
 		    .loginProcessingUrl("/auth") // <form  action="auth"  method="post"
@@ -27,13 +33,21 @@ public class SecurityFilterChainConfig {
 		// csrf 비활성화
 		http.csrf().disable();
 
+
 		 //4. 로그아웃 관련 작업
 //		 http.logout()
 //		     .logoutUrl("/logout")   // security가 자동으로 로그아웃 처리해주는 요청맵핑값
 //		     .logoutSuccessUrl("/home");  // logout 성공시 리다이렉트 되는 요청맵핑값
 		
 		
+
+		 http.logout()
+		     .logoutUrl("/logout")   // security가 자동으로 로그아웃 처리해주는 요청맵핑값
+		     .logoutSuccessUrl("/");  // logout 성공시 리다이렉트 되는 요청맵핑값
+
 		     
+		 http.csrf().disable();
+		 
 		return http.build();
 	}
 	

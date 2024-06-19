@@ -37,6 +37,28 @@
         where phoneNum=#{phoneNum}
     </select>
 
+     <insert id="save" parameterType="UserDTO">
+        insert into user (userName, phoneNum, userNickName, 
+        				  userAddress1, userAddress2,
+        				  userid, passwd, email)
+        values (#{userName}, #{phoneNum}, #{userNickName},
+        		#{userAddress1},#{userAddress2},
+        		#{userid},#{passwd},#{email} )
+     </insert>
+ 	
+ 	<select id="findById" parameterType="string" resultType="UserDTO">
+		select userid, passwd, username
+		from user
+		where userid=#{userid}
+	</select>
+	
+	<select id="findNicknameById" parameterType="String" resultType="String">
+		select userNickname
+		from user
+		where userid=#{userid}
+	</select>
+</mapper>
+
     <select id="findByNickName" parameterType="string" resultType="UserDTO">
         select *
         from user
