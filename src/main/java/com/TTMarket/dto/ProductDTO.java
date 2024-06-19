@@ -20,4 +20,5 @@ public class ProductDTO {
 	String pDate; // 등록일자
 	
 	String pIsTransaction; // 거래여부
+	
 }
