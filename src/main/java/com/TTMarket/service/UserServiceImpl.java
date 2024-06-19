@@ -49,4 +49,10 @@ public class UserServiceImpl implements UserService {
 		return userMapper.findNicknameById(userid);
 	}
 
+	@Override
+	public UserDTO mypage(UserDTO userid) {
+		// TODO Auto-generated method stub
+		return userMapper.mypage(userid);
+	}
+
 }

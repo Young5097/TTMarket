@@ -36,6 +36,14 @@
         from user
         where phoneNum=#{phoneNum}
     </select>
+    
+    <!-- mypage id 찾기 -->
+ 	<select id="mypage" parameterType="String" resultType="UserDTO">
+ 		select userid
+ 		from user
+ 		where userid = #{userid}
+ 	</select>
+ 	
  	
 	<select id="findNicknameById" parameterType="String" resultType="String">
 		select userNickname

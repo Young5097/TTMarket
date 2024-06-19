@@ -18,11 +18,11 @@ import com.TTMarket.dto.UserDTO;
 import com.TTMarket.dto.UserDTO;
 import com.TTMarket.service.UserService;
 
+
+
 @Controller
-
+//@SessionAttributes(names= {"userid"})
 //@SessionAttributes(names= {"login"})
-
-@SessionAttributes(names= {"userid"})
 public class LoginController {
 	
 	private Logger logger = LoggerFactory.getLogger(getClass());

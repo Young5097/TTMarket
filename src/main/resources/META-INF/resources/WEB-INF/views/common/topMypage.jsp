@@ -20,11 +20,7 @@
 		                            <a class="nav-link" href="logout">로그아웃</a>
 		                        </li>
 	                        </sec:authorize>
-	                        <sec:authorize access="isAuthenticated()">
-		                        <li class="nav-item">
-		                            <a class="nav-link" href="mypage">마이페이지</a>
-		                        </li>
-	                         </sec:authorize>
+	                        
 	                    </ul>
  
                     </nav>
