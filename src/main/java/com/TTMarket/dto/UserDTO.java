@@ -1,5 +1,9 @@
 package com.TTMarket.dto;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 import java.util.Collection;
 
 import org.apache.ibatis.type.Alias;
@@ -7,14 +11,39 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Alias("UserDTO")
+public class UserDTO {
+	
+	
+
 public class UserDTO implements UserDetails {
+    @NotEmpty(message = "이름 입력은 필수입니다.")
     private String userName;
+	
+	@NotEmpty(message = "전화번호 입력은 필수입니다.")
+	@Pattern(regexp = "^\\d{3}-\\d{3,4}-\\d{4}$", message = "전화번호는 000-0000-0000 형식이어야 합니다.")
     private String phoneNum;
+    
+    @NotEmpty(message = "닉네임 입력은 필수입니다.")
+    @Size(min = 2, message = "닉네임은 2글자 이상 입력해야 합니다.")
     private String userNickname;
+    
+    @NotEmpty(message ="주소를 입력해주세요.")
     private String userAddress1;
+    
+    @NotEmpty(message ="주소를 입력해주세요.")
     private String userAddress2;
+    
+    @NotEmpty(message = "아이디 입력은 필수입니다.")
+    @Size(min = 4, max = 20, message = "아이디는 4자 이상, 20자 이하로 입력해야 합니다.")
     private String userid;
+    
+    @NotEmpty(message = "비밀번호 입력은 필수입니다.")
+    @Size(min = 4, message = "비밀번호는 4자 이상, 20자 이하로 입력해야 합니다.")
     private String passwd;
+    private String passwd2;
+    
+    @NotEmpty(message = "이메일 입력은 필수입니다.")
+    @Pattern(regexp = "^[a-zA-Z0-9+-\\_.]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$", message="이메일을 다시한번 확인해주세요.")
     private String email;
     
 	public UserDTO() {}
@@ -30,6 +59,23 @@ public class UserDTO implements UserDetails {
 		this.passwd = passwd;
 		this.email = email;
 	}
+	
+	/////////////////////////////////////////
+	public UserDTO(String passwd2) {
+		super();
+		this.passwd2 = passwd2;
+	}
+	public String getPasswd2() {
+		return passwd2;
+	}
+	
+	public void setPasswd2(String passwd2) {
+		this.passwd2 = passwd2;
+	}
+	
+	
+	/////////////////////////////////////////
+
 
 	public String getUserName() {
 		return userName;
@@ -97,10 +143,11 @@ public class UserDTO implements UserDetails {
 
 	@Override
 	public String toString() {
-		return "UserDTO [userName=" + userName + ", phoneNum=" + phoneNum + ", userNickName=" + userNickname
+		return "UserDTO [userName=" + userName + ", phoneNum=" + phoneNum + ", userNickname=" + userNickname
 				+ ", userAddress1=" + userAddress1 + ", userAddress2=" + userAddress2 + ", userid=" + userid
-				+ ", passwd=" + passwd + ", email=" + email + "]";
+				+ ", passwd=" + passwd + ", passwd2=" + passwd2 + ", email=" + email + "]";
 	}
+
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -7,16 +7,33 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.TTMarket.dto.UserDTO;
 
+import com.TTMarket.dto.UserDTO;
+import com.TTMarket.service.UserService;
+
 @Controller
+
+//@SessionAttributes(names= {"login"})
+
 @SessionAttributes(names= {"userid"})
 public class LoginController {
+	
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	
-    @GetMapping("/")
+	UserService userService;
+	
+    public LoginController(UserService userService) {
+		super();
+		this.userService = userService;
+	}
+	@GetMapping("/")
     public String showLoginPage() {
         return "loginForm";
     }
@@ -36,4 +53,5 @@ public class LoginController {
 		logger.info("logger:showlogin_failPage");
 		return "redirect:";
 	}
+	
 }

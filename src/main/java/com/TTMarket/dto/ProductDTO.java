@@ -122,7 +122,4 @@ public class ProductDTO {
 				+ ", pImage=" + pImage + ", pExplain=" + pExplain + ", multipartfile=" + multipartFile + "]";
 	}
 
-	
-
-	
 }

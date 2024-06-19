@@ -27,7 +27,26 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+
+	public UserDTO idCheck(String userid) {
+		// TODO Auto-generated method stub
+		return userMapper.idCheck(userid);
+	}
+
+	@Override
+	public UserDTO userNicknameCheck(String userNickname) {
+		// TODO Auto-generated method stub
+		return userMapper.userNicknameCheck(userNickname);
+	}
+
+	@Override
+	public UserDTO phoneNumCheck(String phoneNum) {
+		// TODO Auto-generated method stub
+		return userMapper.phoneNumCheck(phoneNum);
+	}
+
 	public String findNicknameById(String userid) {
 		return userMapper.findNicknameById(userid);
 	}
+
 }

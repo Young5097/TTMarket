@@ -29,8 +29,8 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-center">
-                        <button type="submit" class="btn btn-primary me-2">로그인</button>
-                        <a class="btn btn-primary me-2" href="signup">회원가입</a>
+                        <button type="submit" class="btn btn-primary me-2" style="color: white; background-color: orange; border-color: unset;">로그인</button>
+                        <a class="btn btn-primary me-2" href="signup" style="color: white; background-color: orange; border-color: unset;">회원가입</a>
                     </div>
                 </form>
             </div>
