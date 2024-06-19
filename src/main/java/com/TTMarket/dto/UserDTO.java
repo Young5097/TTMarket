@@ -11,10 +11,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Alias("UserDTO")
-public class UserDTO {
-	
-	
-
 public class UserDTO implements UserDetails {
     @NotEmpty(message = "이름 입력은 필수입니다.")
     private String userName;
