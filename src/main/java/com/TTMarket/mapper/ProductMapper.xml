@@ -12,6 +12,11 @@
 		order by product_num desc
 	</select>
 	
+	<select id="findByProductNum" resultType="ProductDTO" parameterType="int">
+		select * from product
+		where product_num = #{product_num}
+	</select> 
+	
 	<insert id="enrollProduct" parameterType="ProductDTO">
 		INSERT INTO 
 		product (pName, pCategory, pPrice,

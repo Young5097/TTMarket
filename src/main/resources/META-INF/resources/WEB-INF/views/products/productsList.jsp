@@ -8,7 +8,7 @@ pageEncoding="UTF-8"%>
                 <div class="card">
                     <div class="row g-0">
                         <div class="col-md-4">
-                        <a href="productDetail?product_num=${dto.product_num}">
+                        <a id="moveDetail" href="productDetail?product_num=${dto.product_num}">
                             <img src="images/${dto.pImage}" class="img-fluid rounded-start" alt="Product Image">
                         </a>
                         </div>
