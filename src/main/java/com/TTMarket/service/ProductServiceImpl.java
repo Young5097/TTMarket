@@ -25,4 +25,9 @@ public class ProductServiceImpl implements ProductService {
 		return productMapper.enrollProduct(productDTO);
 	}
 
+	@Override
+	public ProductDTO findByProductNum(int product_num) {
+		return productMapper.findByProductNum(product_num);
+	}
+
 }

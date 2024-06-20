@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Alias("ProductDTO")
 public class ProductDTO {
+	private int product_num;
 	private String pName; // 제품 명
 	private String pCategory; // 제품 카테고리
 	private int pPrice; // 제품 가격
@@ -17,12 +18,16 @@ public class ProductDTO {
 	private String pImage;
 	private String pExplain;
 	
+	// 사진파일 입력
 	private MultipartFile multipartFile;
+	// 출력날짜 변경
+	private String formattedDate;
 	
 	public ProductDTO() {}
 	
-	public ProductDTO(String pName, String pCategory, int pPrice, String userNickname, String pLocation, Date pDate,
+	public ProductDTO(int product_num, String pName, String pCategory, int pPrice, String userNickname, String pLocation, Date pDate,
 			boolean pIsTransaction, String pImage, String pExplain, MultipartFile multipartFile) {
+		this.product_num = product_num;
 		this.pName = pName;
 		this.pCategory = pCategory;
 		this.pPrice = pPrice;
@@ -115,11 +120,27 @@ public class ProductDTO {
 		this.multipartFile = multipartFile;
 	}
 
-	@Override
-	public String toString() {
-		return "ProductDTO [pName=" + pName + ", pCategory=" + pCategory + ", pPrice=" + pPrice + ", userNickname="
-				+ userNickname + ", pLocation=" + pLocation + ", pDate=" + pDate + ", pIsTransaction=" + pIsTransaction
-				+ ", pImage=" + pImage + ", pExplain=" + pExplain + ", multipartfile=" + multipartFile + "]";
+	public int getProduct_num() {
+		return product_num;
 	}
 
+	public void setProduct_num(int product_num) {
+		this.product_num = product_num;
+	}
+
+	public String getFormattedDate() {
+		return formattedDate;
+	}
+
+	public void setFormattedDate(String formattedDate) {
+		this.formattedDate = formattedDate;
+	}
+
+	@Override
+	public String toString() {
+		return "ProductDTO [product_num=" + product_num + ", pName=" + pName + ", pCategory=" + pCategory + ", pPrice="
+				+ pPrice + ", userNickname=" + userNickname + ", pLocation=" + pLocation + ", pDate=" + pDate
+				+ ", pIsTransaction=" + pIsTransaction + ", pImage=" + pImage + ", pExplain=" + pExplain
+				+ ", multipartFile=" + multipartFile + "]";
+	}
 }

@@ -10,4 +10,5 @@ import com.TTMarket.dto.ProductDTO;
 public interface ProductMapper {
 	public List<ProductDTO> productList();
 	public int enrollProduct(ProductDTO productDTO);
+	public ProductDTO findByProductNum(int product_num);
 }

@@ -6,12 +6,16 @@
 <mapper namespace="com.TTMarket.mapper.ProductMapper">
 
  	<select id="productList" resultType="ProductDTO">
-		select pName, pCategory, pPrice, userNickName, 
-			   pLocation, pDate, pIsTransaction, pImage
+		select *
 		from product
 		where pIsTransaction=false
 		order by product_num desc
 	</select>
+	
+	<select id="findByProductNum" resultType="ProductDTO" parameterType="int">
+		select * from product
+		where product_num = #{product_num}
+	</select> 
 	
 	<insert id="enrollProduct" parameterType="ProductDTO">
 		INSERT INTO 
