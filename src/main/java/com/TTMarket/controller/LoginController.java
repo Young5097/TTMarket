@@ -42,8 +42,7 @@ public class LoginController {
 		
 		String userid = auth.getName();
 		model.addAttribute("userid", userid);
-		logger.debug("logger:showlogin_successPage");	
-		
+		logger.debug("logger:showlogin_successPage");		
 		return "redirect:main";
 	}
 	

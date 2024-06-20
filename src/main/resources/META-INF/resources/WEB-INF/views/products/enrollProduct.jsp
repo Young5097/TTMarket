@@ -14,6 +14,9 @@
         background-color: orange;
         border-color: unset;
     }
+    #pExplain {
+    	height: 250px;
+    }
 </style>
 <div class="container" id="enrollContainer">
     <h2>상품 등록</h2>
@@ -34,7 +37,7 @@
         <div class="row mb-3">
             <label for="pExplain" class="col-sm-3 col-form-label">상품설명</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="pExplain" name="pExplain" style="height: 200px;">
+                <textarea class="form-control" id="pExplain" name="pExplain">거래날짜,시간을 반드시 포함하여 작성해주세요</textarea>
             </div>
         </div>
         <div class="row mb-3">
