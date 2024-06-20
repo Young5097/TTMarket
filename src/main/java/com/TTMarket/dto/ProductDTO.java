@@ -13,6 +13,7 @@ public class ProductDTO {
 	private int pPrice; // 제품 가격
 	private String userNickname; // 유저 닉네임
 	private String pLocation; // 거래위치
+	private String pLocation2; // 상세위치
 	private Date pDate; // 등록일자
 	private boolean pIsTransaction; // 거래여부
 	private String pImage;
@@ -25,7 +26,8 @@ public class ProductDTO {
 	
 	public ProductDTO() {}
 	
-	public ProductDTO(int product_num, String pName, String pCategory, int pPrice, String userNickname, String pLocation, Date pDate,
+	public ProductDTO(int product_num, String pName, String pCategory, int pPrice, String userNickname, String pLocation, 
+			String pLocation2, Date pDate,
 			boolean pIsTransaction, String pImage, String pExplain, MultipartFile multipartFile) {
 		this.product_num = product_num;
 		this.pName = pName;
@@ -33,6 +35,7 @@ public class ProductDTO {
 		this.pPrice = pPrice;
 		this.userNickname = userNickname;
 		this.pLocation = pLocation;
+		this.pLocation2 = pLocation2;
 		this.pDate = pDate;
 		this.pIsTransaction = pIsTransaction;
 		this.pImage = pImage;
@@ -86,6 +89,14 @@ public class ProductDTO {
 
 	public void setpLocation(String pLocation) {
 		this.pLocation = pLocation;
+	}
+	
+	public String getpLocation2() {
+		return pLocation2;
+	}
+
+	public void setpLocation2(String pLocation2) {
+		this.pLocation2 = pLocation2;
 	}
 
 	public Date getpDate() {
