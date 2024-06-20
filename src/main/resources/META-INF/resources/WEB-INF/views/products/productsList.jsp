@@ -1,18 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <style>
-    #id {
-        width: 200px;
-        height: 200px;
+	#imgDiv {
+		margin-top:10px;
+		margin-bottom:10px;		
+	}
+    #img {
+        max-width: 200px;
+        max-height: 200px;
         object-fit: cover;
-        margin-top: 10px;
-        margin-bottom: 10px;
         display: block; /* 이미지를 블록 요소로 설정하여 부모 요소(card)의 크기에 맞게 조정 */
         margin: 0 auto; /* 가로 중앙 정렬을 위해 왼쪽과 오른쪽 여백을 자동으로 설정 */
     }
     .card-body {
-    	display: flex;
+        display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -20,13 +22,13 @@ pageEncoding="UTF-8"%>
     }
     .card-text {
         font-size: 15px;
-        margin-top:1px;
-        margin-bottom:1px;
+        margin-top: 1px;
+        margin-bottom: 1px;
     }
     .card-text2 {
         font-size: 20px;
-        margin-top:3px;
-        margin-bottom:0;
+        margin-top: 3px;
+        margin-bottom: 0;
     }
     .status-text {
         display: flex;
@@ -44,7 +46,7 @@ pageEncoding="UTF-8"%>
             <div class="col mb-4">
                 <div class="card">
                     <div class="row g-0">
-                        <div class="col-md-4">
+                        <div class="col-md-4" id="imgDiv">
                             <a id="moveDetail" href="productDetail?product_num=${dto.product_num}">
                                 <img src="images/${dto.pImage}" class="img-fluid rounded-start fixed-size-img" id="img" alt="Product Image">
                             </a>
