@@ -21,7 +21,6 @@ import com.TTMarket.service.UserService;
 @Controller
 
 //@SessionAttributes(names= {"login"})
-
 @SessionAttributes(names= {"userid"})
 public class LoginController {
 	

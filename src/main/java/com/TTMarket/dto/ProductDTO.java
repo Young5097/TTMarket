@@ -18,7 +18,10 @@ public class ProductDTO {
 	private String pImage;
 	private String pExplain;
 	
+	// 사진파일 입력
 	private MultipartFile multipartFile;
+	// 출력날짜 변경
+	private String formattedDate;
 	
 	public ProductDTO() {}
 	
@@ -123,6 +126,14 @@ public class ProductDTO {
 
 	public void setProduct_num(int product_num) {
 		this.product_num = product_num;
+	}
+
+	public String getFormattedDate() {
+		return formattedDate;
+	}
+
+	public void setFormattedDate(String formattedDate) {
+		this.formattedDate = formattedDate;
 	}
 
 	@Override
