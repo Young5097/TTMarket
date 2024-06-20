@@ -1,5 +1,7 @@
 package com.TTMarket.dto;
 
+import java.util.Date;
+
 import org.apache.ibatis.type.Alias;
 
 @Alias("DealDTO")
@@ -9,16 +11,21 @@ public class DealDTO {
 	private String seller_nick;
 	private String buyer_nick;
 	private boolean IsCheckedDeal;
+	private Date requestDealDate;
+	private Date completeDealDate;
 	
 	public DealDTO() {}
 
-	public DealDTO(int deal_num, int product_num, String seller_nick, String buyer_nick, boolean isCheckedDeal) {
+	public DealDTO(int deal_num, int product_num, String seller_nick, String buyer_nick, boolean isCheckedDeal,
+			Date requestDealDate, Date completeDealDate) {
 		super();
 		this.deal_num = deal_num;
 		this.product_num = product_num;
 		this.seller_nick = seller_nick;
 		this.buyer_nick = buyer_nick;
 		IsCheckedDeal = isCheckedDeal;
+		this.requestDealDate = requestDealDate;
+		this.completeDealDate = completeDealDate;
 	}
 
 	public int getDeal_num() {
@@ -60,10 +67,27 @@ public class DealDTO {
 	public void setIsCheckedDeal(boolean isCheckedDeal) {
 		IsCheckedDeal = isCheckedDeal;
 	}
+	
+	public Date getRequestDealDate() {
+		return requestDealDate;
+	}
+
+	public void setRequestDealDate(Date requestDealDate) {
+		this.requestDealDate = requestDealDate;
+	}
+
+	public Date getCompleteDealDate() {
+		return completeDealDate;
+	}
+
+	public void setCompleteDealDate(Date completeDealDate) {
+		this.completeDealDate = completeDealDate;
+	}
 
 	@Override
 	public String toString() {
 		return "DealDTO [deal_num=" + deal_num + ", product_num=" + product_num + ", seller_nick=" + seller_nick
-				+ ", buyer_nick=" + buyer_nick + ", IsCheckedDeal=" + IsCheckedDeal + "]";
+				+ ", buyer_nick=" + buyer_nick + ", IsCheckedDeal=" + IsCheckedDeal + ", requestDealDate="
+				+ requestDealDate + ", completeDealDate=" + completeDealDate + "]";
 	}
 }

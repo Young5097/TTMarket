@@ -13,6 +13,7 @@
         color: white;
         background-color: orange;
         border-color: unset;
+        margin-bottom: 30px; /* 버튼 아래 여백 추가 */
     }
     #pExplain {
     	height: 250px;

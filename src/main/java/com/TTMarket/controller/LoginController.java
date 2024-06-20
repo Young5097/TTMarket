@@ -39,7 +39,6 @@ public class LoginController {
     
 	@GetMapping("/login_success")
 	public String login_success(ModelMap model, Authentication auth) {
-		
 		String userid = auth.getName();
 		model.addAttribute("userid", userid);
 		logger.debug("logger:showlogin_successPage");		

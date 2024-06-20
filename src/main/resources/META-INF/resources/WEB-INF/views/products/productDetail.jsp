@@ -3,8 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <style>
 	#productImage {
-		max-width:400px; 
-		height:auto;
+		max-width:500px; 
+		max-height:500px;
+		object-fit: cover;
 		margin-top:15px;
 	}
 	#map-container {
