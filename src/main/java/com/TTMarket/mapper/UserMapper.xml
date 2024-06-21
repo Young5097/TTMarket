@@ -37,6 +37,7 @@
         where phoneNum=#{phoneNum}
     </select>
     
+<<<<<<< HEAD
     <!-- 정보수정 -->
 	<update id="updateUser" parameterType="map">
 	    UPDATE user
@@ -47,6 +48,15 @@
 	    WHERE userid = #{userid}
 	</update>
 
+=======
+    <!-- mypage id 찾기 -->
+ 	<select id="mypage" parameterType="String" resultType="UserDTO">
+ 		select userid
+ 		from user
+ 		where userid = #{userid}
+ 	</select>
+ 	
+>>>>>>> 6c5ef02b7df2d27eee0549cb8524fa3cf1420865
  	
 	<select id="findNicknameById" parameterType="String" resultType="String">
 		select userNickname
