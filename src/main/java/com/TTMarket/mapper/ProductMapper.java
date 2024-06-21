@@ -13,4 +13,6 @@ public interface ProductMapper {
 	public ProductDTO findByProductNum(int product_num);
 	
 	public List<ProductDTO> productMyList(String userNickname);
+	// 검색기능 조회
+	List<ProductDTO> searchProducts(String keyword);
 }

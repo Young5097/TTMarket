@@ -15,5 +15,4 @@ public interface UserService {
 	public UserDTO findId(String userid);
 	
 	void updateUser(String userid, String phoneNum, String email, String userAddress1, String userAddress2, UserDTO userDTO) throws Exception;
-
 }

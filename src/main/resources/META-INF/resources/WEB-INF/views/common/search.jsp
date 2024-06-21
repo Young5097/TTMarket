@@ -11,13 +11,15 @@
         <div class="container">
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
+                
                 	<!-- 검색창 -->
 					<nav class="navbar navbar-light bg-light">
 					  <div class="container-fluid">
-					    <form class="d-flex">
-					      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-					       <button class="btn btn-sm btn-outline-secondary" type="button">Search</button>
-					    </form>
+						<form class="d-flex" id="searchForm">
+						    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="searchInput">
+						    <button class="btn btn-sm btn-outline-secondary" type="submit"
+						    style="color: white; background-color: orange; border-color: unset;">Search</button>
+						</form>
 					  </div>
 					</nav>
 					
@@ -33,3 +35,4 @@
         </div>
     </nav>
 </header>
+

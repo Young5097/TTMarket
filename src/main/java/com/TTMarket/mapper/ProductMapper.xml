@@ -41,6 +41,16 @@
 		from product
 		where userNickname = #{userNickname}
 	</select>
+	
+	<!-- 검색기능(제품명, 제품카테고리, 위치 기준) -->
+	<select id="searchProducts" resultType="ProductDTO" parameterType="String">
+	    SELECT *
+	    FROM product
+	    WHERE pName LIKE CONCAT('%', #{keyword}, '%')
+	       OR pCategory LIKE CONCAT('%', #{keyword}, '%')
+	       OR pLocation LIKE CONCAT('%', #{keyword}, '%');		
+	</select>
+
 </mapper>
 
 

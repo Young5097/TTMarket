@@ -24,5 +24,5 @@ public interface UserMapper {
 			@Param("userAddress1") String userAddress1,
 			@Param("userAddress2") String userAddress2,
 			@Param("userDTO") UserDTO userDTO) throws Exception;
-
+	
 }
