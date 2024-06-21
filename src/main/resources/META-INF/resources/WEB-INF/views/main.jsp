@@ -35,6 +35,7 @@
         height: 40px;
     }
 </style>
+
 <link rel="stylesheet" href="webjars/bootstrap/5.1.3/css/bootstrap.min.css">
 <script src="webjars/jquery/3.7.1/jquery.min.js"></script>
 </head>
@@ -42,7 +43,35 @@
 <div class="App">
     <jsp:include page="common/top.jsp" flush="true" />
     <jsp:include page="common/search.jsp" flush="true" />
-    <jsp:include page="products/productsList.jsp" flush="true" />
+	<div id="productListContainer">
+        <%@ include file="products/productsList.jsp" %>
+    </div>
 </div>
+<script>
+
+$(document).ready(function() {
+    $('#searchForm').submit(function(event) {
+        event.preventDefault(); // 기본 form 제출 방지
+
+        var keyword = $('#searchInput').val().trim();
+        if (keyword.length > 0) {
+            $.ajax({
+                url: '/TTMarket/search?keyword=' + encodeURIComponent(keyword),
+                type: 'GET',
+                success: function(data) {
+                    $('#productList').html(data); // 검색 결과로 product list 업데이트
+                },
+                error: function(xhr, status, error) {
+                    console.error('AJAX request error:', status, error);
+                }
+            });
+        }
+    });
+});
+
+</script>
+
 </body>
 </html>
+
+
