@@ -27,8 +27,8 @@
 			$.ajax({
 				method: "post",
 				url: "updateProduct",
-				date: { proudct_num: product_num},
-				success: function(reponse) {
+				data: { proudct_num: product_num },
+				success: function(response) {
 					alert("수정이 완료되었습니다.")
 				},
                 error: function(xhr, status, error) {

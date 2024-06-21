@@ -13,4 +13,5 @@ public interface ProductMapper {
 	public ProductDTO findByProductNum(int product_num);
 	public List<ProductDTO> productMyList(String userNickname);
 	public int updateProduct(ProductDTO productDTO);
+	public int removeProduct(int product_num);
 }

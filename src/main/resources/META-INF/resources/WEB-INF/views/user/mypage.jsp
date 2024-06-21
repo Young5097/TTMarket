@@ -29,6 +29,36 @@
 		font-size: 14px;
 	}
 </style>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".removeProduct").on("click", function() {
+            var product_num = $(this).data("product-num");
+            
+            // 확인 창을 띄우기
+            if (confirm("정말로 이 상품을 삭제하시겠습니까?")) {
+                $.ajax({
+                    method: "post",
+                    url: "removeProductController",
+                    data: { product_num: product_num },
+                    success: function(response) {
+                        if (response === "success") {
+                            alert("삭제가 완료되었습니다.");
+							location.reload();
+                        } else {
+                            alert("삭제 실패");
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.log("요청 실패", error);
+                    }
+                });
+            } else {
+                // 사용자가 취소를 선택한 경우 처리할 내용
+                console.log("사용자가 삭제를 취소했습니다.");
+            }
+        });
+    });
+</script>
 <div class="container">
 	<div id="fixForm">
 	    <p id="title_update">회원정보 수정</p>
@@ -104,15 +134,16 @@
 	            </tr>
 	        </thead>
 	        <tbody>
-	            <c:forEach items="${productList}" var="product">
+	            <c:forEach items="${productList}" var="productDTO">
 	                <tr>
-	                    <td><a href="productDetail?product_num=${product.product_num}" class="text-decoration-none" style="color: black; font-size: 14px;">${product.pName}</a></td>
-	                    <td>${product.pCategory}</td>
-	                    <td>${product.pPrice}</td>
+	                    <td><a href="productDetail?product_num=${productDTO.product_num}" class="text-decoration-none" style="color: black; font-size: 14px;">${productDTO.pName}</a></td>
+	                    <td>${productDTO.pCategory}</td>
+	                    <td>${productDTO.pPrice}</td>
 	                    <td>
-	                        <button class="btn btn-sm btn-primary" style="font-size: 12px;" onclick="location.href='updateProduct?product_num=${product.product_num}'">수정</button>
-	                        <button class="btn btn-sm btn-danger" style="font-size: 12px;" onclick="deleteProduct(${product.product_num})">삭제</button>
-	                        <button class="btn btn-sm btn" style="font-size: 12px; color:white; background-color: orange;" onclick="deleteProduct(${product.product_num})">거래확인</button>
+	                        <button class="btn btn-sm btn-primary" style="font-size: 12px;" onclick="location.href='updateProduct?product_num=${productDTO.product_num}'">수정</button>
+	                        <button class="btn btn-sm btn-danger removeProduct" style="font-size: 12px;"
+	                        		data-product-num="${productDTO.product_num}">삭제</button>
+	                        <button class="btn btn-sm btn" style="font-size: 12px; color:white; background-color: orange;">거래확인</button>
 	                    </td>
 	                </tr>
 	            </c:forEach>
@@ -120,33 +151,8 @@
 	    </table>
 	</div>
 	
-	<div id="myProductForm">
-	    <p id="title_list">판매내역</p>
-	    <table class="table table-bordered table-hover">
-	        <thead class="table-control">
-	            <tr>
-	                <th scope="col">상품명</th>
-	                <th scope="col">카테고리</th>
-	                <th scope="col">가격</th>
-	                <th scope="col">수정/삭제</th>
-	            </tr>
-	        </thead>
-	        <tbody>
-	            <c:forEach items="${productList}" var="product">
-	                <tr>
-	                    <td><a href="productDetail?product_num=${product.product_num}" class="text-decoration-none" style="color: black; font-size: 14px;">${product.pName}</a></td>
-	                    <td>${product.pCategory}</td>
-	                    <td>${product.pPrice}</td>
-	                    <td>
-	                        <button class="btn btn-sm btn-primary" style="font-size: 12px;" onclick="location.href='updateProduct?product_num=${product.product_num}'">수정</button>
-	                        <button class="btn btn-sm btn-danger" style="font-size: 12px;" onclick="deleteProduct(${product.product_num})">삭제</button>
-	                    </td>
-	                </tr>
-	            </c:forEach>
-	        </tbody>
-	    </table>
+
 	    <br><br>    
-	</div>
 </div>
 
 

@@ -41,4 +41,9 @@ public class ProductServiceImpl implements ProductService {
 		return productMapper.updateProduct(productDTO);
 	}
 
+	@Override
+	public int removeProduct(int product_num) {
+		return productMapper.removeProduct(product_num);
+	}
+
 }
