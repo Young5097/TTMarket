@@ -16,7 +16,7 @@
 					  <div class="container-fluid">
 					    <form class="d-flex">
 					      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-					       <button class="btn btn-sm btn-outline-secondary" type="button">button</button>
+					       <button class="btn btn-sm btn-outline-secondary" type="button">Search</button>
 					    </form>
 					  </div>
 					</nav>

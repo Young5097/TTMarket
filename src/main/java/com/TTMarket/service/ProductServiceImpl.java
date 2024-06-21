@@ -2,6 +2,7 @@ package com.TTMarket.service;
 
 import java.util.List;
 
+
 import org.springframework.stereotype.Service;
 
 import com.TTMarket.dto.ProductDTO;
@@ -28,6 +29,12 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public ProductDTO findByProductNum(int product_num) {
 		return productMapper.findByProductNum(product_num);
+	}
+	
+	@Override
+	public List<ProductDTO> productMyList(String userNickname) {
+		// TODO Auto-generated method stub
+		return productMapper.productMyList(userNickname);
 	}
 
 }

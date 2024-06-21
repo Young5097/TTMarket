@@ -26,6 +26,21 @@
 				#{userNickname},#{pLocation},#{pLocation2},#{pDate},
 				#{pIsTransaction},#{pImage},#{pExplain});
 	</insert>
+	
+	 <select id="productMyList" resultType="ProductDTO">
+		select `product_num`, 
+				`pName`, 
+				`pCategory`, 
+				`pPrice`, 
+				`userNickname`, 
+				`pLocation`, 
+				`pDate`, 
+				`pIsTransaction`,
+				 `pImage`, 
+				 `pExplain`	
+		from product
+		where userNickname = #{userNickname}
+	</select>
 </mapper>
 
 
