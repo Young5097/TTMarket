@@ -18,7 +18,6 @@ public class DealDTO {
 
 	public DealDTO(int deal_num, int product_num, String seller_nick, String buyer_nick, boolean isCheckedDeal,
 			Date requestDealDate, Date completeDealDate) {
-		super();
 		this.deal_num = deal_num;
 		this.product_num = product_num;
 		this.seller_nick = seller_nick;
