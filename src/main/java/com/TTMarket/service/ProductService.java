@@ -8,4 +8,7 @@ public interface ProductService {
 	public List<ProductDTO> productList();
 	public int enrollProduct(ProductDTO productDTO);
 	public ProductDTO findByProductNum(int product_num);
+	
+	
+	public List<ProductDTO> productMyList(String userNickname);
 }

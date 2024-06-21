@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.TTMarket.mapper.ProductMapper">
+
+ 	<select id="productList" resultType="ProductDTO">
+		select *
+		from product
+		where pIsTransaction=false
+		order by product_num desc
+	</select>
+	
+	<select id="findByProductNum" resultType="ProductDTO" parameterType="int">
+		select * from product
+		where product_num = #{product_num}
+	</select> 
+	
+	<insert id="enrollProduct" parameterType="ProductDTO">
+		INSERT INTO 
+		product (pName, pCategory, pPrice,
+				 userNickname, pLocation, pDate,
+				 pIsTransaction, pImage, pExplain) 
+		VALUES (#{pName},#{pCategory},#{pPrice},
+				#{userNickname},#{pLocation},#{pDate},
+				#{pIsTransaction},#{pImage},#{pExplain});
+	</insert>
+</mapper>
+
+
