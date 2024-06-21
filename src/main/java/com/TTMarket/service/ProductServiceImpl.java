@@ -29,5 +29,11 @@ public class ProductServiceImpl implements ProductService {
 	public ProductDTO findByProductNum(int product_num) {
 		return productMapper.findByProductNum(product_num);
 	}
+	
+	@Override
+	public List<ProductDTO> productMyList(String userNickname) {
+		// TODO Auto-generated method stub
+		return productMapper.productMyList(userNickname);
+	}
 
 }

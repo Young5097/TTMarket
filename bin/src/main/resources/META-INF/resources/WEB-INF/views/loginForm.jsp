@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인페이지</title>
+<title>메인홈페이지</title>
 <link href="webjars/bootstrap/5.1.3/css/bootstrap.min.css"  rel="stylesheet" >
 </head>
 
