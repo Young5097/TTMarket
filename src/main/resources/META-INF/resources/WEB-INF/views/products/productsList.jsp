@@ -77,3 +77,30 @@
         </c:forEach>
     </div>
 </div>
+
+
+<script>
+$(document).ready(function() {
+    var page = 1;
+    var loading = false;
+    
+    $(window).scroll(function() {
+        if ($(window).scrollTop() + $(window).height() >= $(document).height() - 100 && !loading) {
+            loading = true;
+            page++;
+            $.ajax({
+                url: '/main?page=' + page,
+                success: function(data) {
+                    if (data.trim().length == 0) {
+                        loading = true; // No more data available
+                    } else {
+                        $('#productList').append(data);
+                        loading = false;
+                    }
+                }
+            });
+        }
+    });
+});
+</script>
+
