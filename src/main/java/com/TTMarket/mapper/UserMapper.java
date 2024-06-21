@@ -1,7 +1,7 @@
 package com.TTMarket.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
-
+import org.apache.ibatis.annotations.Param;
 
 import com.TTMarket.dto.UserDTO;
 
@@ -15,5 +15,12 @@ public interface UserMapper {
 	public UserDTO phoneNumCheck(String phoneNum); // 전화번호 중복체크	
 
 	public String findNicknameById(String userid);
+	
+	void updateUser(@Param("userid") String userid,
+			@Param("phoneNum") String phoneNum,
+			@Param("email") String email,
+			@Param("userAddress1") String userAddress1,
+			@Param("userAddress2") String userAddress2,
+			@Param("userDTO") UserDTO userDTO) throws Exception;
 
 }

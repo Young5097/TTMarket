@@ -49,4 +49,20 @@ public class UserServiceImpl implements UserService {
 		return userMapper.findNicknameById(userid);
 	}
 
+	@Override
+	public UserDTO findId(String userid) {
+		// TODO Auto-generated method stub
+		return userMapper.findById(userid);
+	}
+	
+    @Override
+    public void updateUser(String userid, 
+    		String phoneNum,
+    		String email,
+    		String userAddress1,
+    		String userAddress2,
+    		UserDTO userDTO) throws Exception {
+        userMapper.updateUser(userid, phoneNum, email, userAddress1, userAddress2, userDTO);
+    }
+
 }

@@ -50,8 +50,7 @@ public class UserController {
 	    String encptPw = 
 	            new BCryptPasswordEncoder().encode(userDTO.getPasswd());
 	    userDTO.setPasswd(encptPw);
-	    System.out.println("========================");
-	    System.out.println(userDTO.toString());
+	    
 	    
 	    int n = userService.save(userDTO);
 	    return "redirect:/"; // 회원가입 성공 후 메인 페이지로 리다이렉트

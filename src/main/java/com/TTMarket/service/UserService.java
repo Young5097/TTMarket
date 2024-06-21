@@ -11,5 +11,8 @@ public interface UserService {
 	public UserDTO phoneNumCheck(String phoneNum); // 전화번호 중복체크
 
 	public String findNicknameById(String userid);
+	public UserDTO findId(String userid);
+	
+	void updateUser(String userid, String phoneNum, String email, String userAddress1, String userAddress2, UserDTO userDTO) throws Exception;
 
 }
