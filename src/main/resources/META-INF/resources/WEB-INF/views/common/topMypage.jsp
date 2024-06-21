@@ -20,15 +20,12 @@
 		                            <a class="nav-link" href="logout">로그아웃</a>
 		                        </li>
 	                        </sec:authorize>
-<<<<<<< HEAD
+
 	                        <sec:authorize access="isAuthenticated()">
 		                        <li class="nav-item">
 		                            <a class="nav-link" href="#">정보저장</a>
 		                        </li>
 	                        </sec:authorize>
-=======
-	                        
->>>>>>> 6c5ef02b7df2d27eee0549cb8524fa3cf1420865
 	                    </ul>
  
                     </nav>

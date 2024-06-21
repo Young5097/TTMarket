@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD
 <meta charset="UTF-8">
 <title>메인홈페이지</title>
 <style type="text/css">
@@ -25,7 +24,7 @@
 </style>
 <link rel="stylesheet" href="webjars/bootstrap/5.1.3/css/bootstrap.min.css">
 <script src="webjars/jquery/3.7.1/jquery.min.js"></script>
-=======
+
     <meta charset="UTF-8">
     <title>마이페이지</title>
     <style type="text/css">
@@ -48,17 +47,14 @@
     </style>
     <link rel="stylesheet" href="webjars/bootstrap/5.1.3/css/bootstrap.min.css">
     <script src="webjars/jquery/3.7.1/jquery.min.js"></script>
->>>>>>> 6c5ef02b7df2d27eee0549cb8524fa3cf1420865
+
 </head>
 <body>
 <div class="App">
     <jsp:include page="common/topMypage.jsp" flush="true" /><br>
     <hr>
-<<<<<<< HEAD
-    <jsp:include page="member/mypage.jsp" flush="true" /><br>
-=======
-    <jsp:include page="member/mypage.jsp" flush="true" />
->>>>>>> 6c5ef02b7df2d27eee0549cb8524fa3cf1420865
+    <jsp:include page="user/mypage.jsp" flush="true" /><br>
+
 </div>
 </body>
 </html>

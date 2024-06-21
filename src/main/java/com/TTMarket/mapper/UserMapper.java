@@ -1,11 +1,8 @@
 package com.TTMarket.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
-<<<<<<< HEAD
-import org.apache.ibatis.annotations.Param;
 
-=======
->>>>>>> 6c5ef02b7df2d27eee0549cb8524fa3cf1420865
+import org.apache.ibatis.annotations.Param;
 import com.TTMarket.dto.UserDTO;
 
 

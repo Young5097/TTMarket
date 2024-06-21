@@ -20,13 +20,11 @@ import com.TTMarket.service.UserService;
 
 
 
-@Controller
 //@SessionAttributes(names= {"userid"})
 //@SessionAttributes(names= {"login"})
-<<<<<<< HEAD
+
+@Controller
 @SessionAttributes(names= {"userid"})
-=======
->>>>>>> 6c5ef02b7df2d27eee0549cb8524fa3cf1420865
 public class LoginController {
 	
 	private Logger logger = LoggerFactory.getLogger(getClass());

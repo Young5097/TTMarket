@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-<<<<<<< HEAD
+
 	public UserDTO findId(String userid) {
 		// TODO Auto-generated method stub
 		return userMapper.findById(userid);
@@ -65,11 +65,11 @@ public class UserServiceImpl implements UserService {
     		UserDTO userDTO) throws Exception {
         userMapper.updateUser(userid, phoneNum, email, userAddress1, userAddress2, userDTO);
     }
-=======
+
 	public UserDTO mypage(UserDTO userid) {
 		// TODO Auto-generated method stub
 		return userMapper.mypage(userid);
 	}
->>>>>>> 6c5ef02b7df2d27eee0549cb8524fa3cf1420865
+
 
 }
