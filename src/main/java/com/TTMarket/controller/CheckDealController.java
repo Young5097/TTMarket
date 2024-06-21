@@ -28,17 +28,26 @@ public class CheckDealController {
 	}
 	
 	@PostMapping("putDeal") 
-	public @ResponseBody String putDeal(@RequestParam("product_num") int product_num, // 제품번호
+	public @ResponseBody String putDeal(@RequestParam("product_num") int product_num, // 중고제품등록번호
 						  				@RequestParam("userNickname") String userNickname, // seller 닉네임
 						  				ModelMap model, Authentication auth,
 						  				DealDTO dealDTO) {
-		String buyer_userDTO = userService.findNicknameById(auth.getName()); // buyer 닉네임
+		String buyer_userNickname = userService.findNicknameById(auth.getName()); // buyer 닉네임
+		
+		// 자신이 올린 상품 구매불가
+		if (userNickname.equals(buyer_userNickname)) {
+			return "fail";
+		}
+		// 이미 거래신청한 제품이면 신청불가
+		if (dealService.checkIsRequested(product_num).equals(buyer_userNickname)) {
+			return "fail2";
+		}
 		Date requestDate = new Date();
 		
 		// 각 거래정보요소 저장 및 DB 반영
 		dealDTO.setProduct_num(product_num);
 		dealDTO.setSeller_nick(userNickname);
-		dealDTO.setBuyer_nick(buyer_userDTO);
+		dealDTO.setBuyer_nick(buyer_userNickname);
 		dealDTO.setRequestDealDate(requestDate);
 		dealService.saveDeal(dealDTO);
 		

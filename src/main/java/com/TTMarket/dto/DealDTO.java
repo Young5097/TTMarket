@@ -13,18 +13,22 @@ public class DealDTO {
 	private boolean IsCheckedDeal;
 	private Date requestDealDate;
 	private Date completeDealDate;
+	private boolean seller_check;
+	private boolean buyer_check;
 	
 	public DealDTO() {}
 
 	public DealDTO(int deal_num, int product_num, String seller_nick, String buyer_nick, boolean isCheckedDeal,
-			Date requestDealDate, Date completeDealDate) {
+			Date requestDealDate, Date completeDealDate, boolean seller_check, boolean buyer_check) {
 		this.deal_num = deal_num;
 		this.product_num = product_num;
 		this.seller_nick = seller_nick;
 		this.buyer_nick = buyer_nick;
-		IsCheckedDeal = isCheckedDeal;
+		this.IsCheckedDeal = isCheckedDeal;
 		this.requestDealDate = requestDealDate;
 		this.completeDealDate = completeDealDate;
+		this.seller_check = seller_check;
+		this.buyer_check = buyer_check;
 	}
 
 	public int getDeal_num() {
@@ -81,6 +85,22 @@ public class DealDTO {
 
 	public void setCompleteDealDate(Date completeDealDate) {
 		this.completeDealDate = completeDealDate;
+	}
+	
+	public boolean isSeller_check() {
+		return seller_check;
+	}
+
+	public void setSeller_check(boolean seller_check) {
+		this.seller_check = seller_check;
+	}
+
+	public boolean isBuyer_check() {
+		return buyer_check;
+	}
+
+	public void setBuyer_check(boolean buyer_check) {
+		this.buyer_check = buyer_check;
 	}
 
 	@Override

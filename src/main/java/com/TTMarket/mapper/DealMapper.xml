@@ -10,6 +10,11 @@
 		                  IsCheckedDeal, requestDealDate, completeDealDate)
 		values (#{product_num},#{seller_nick},#{buyer_nick},#{IsCheckedDeal},#{requestDealDate},#{completeDealDate})	
 	</insert>
-
+	
+	<select id="checkIsRequested" parameterType="int" resultType="string">
+		 select buyer_nick
+		 from deal
+		 where product_num = #{product_num}
+	</select>
 </mapper>
 

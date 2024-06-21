@@ -25,7 +25,13 @@
                 url: "putDeal",
                 data: { product_num: product_num, userNickname: userNickname },
                 success: function(response) {
-                    alert("거래신청이 완료되었습니다.")
+                    if (response === "success") {
+                        alert("거래신청이 완료되었습니다.");
+                    } else if (response === "fail") {
+                        alert("판매자와 구매자가 동일할 수 없습니다.");
+                    } else if (response === "fail2") {
+                        alert("이미 거래신청이 되었습니다.");
+                    }
                 },
                 error: function(xhr, status, error) {
                     console.log("요청 실패", error);

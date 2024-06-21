@@ -18,4 +18,9 @@ public class DealServiceImpl implements DealService {
 		return dealMapper.saveDeal(dealDTO);
 	}
 
+	@Override
+	public String checkIsRequested(int product_num) {
+		return dealMapper.checkIsRequested(product_num);
+	}
+
 }
