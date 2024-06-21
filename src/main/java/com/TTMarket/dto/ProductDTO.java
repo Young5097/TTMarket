@@ -150,8 +150,10 @@ public class ProductDTO {
 	@Override
 	public String toString() {
 		return "ProductDTO [product_num=" + product_num + ", pName=" + pName + ", pCategory=" + pCategory + ", pPrice="
-				+ pPrice + ", userNickname=" + userNickname + ", pLocation=" + pLocation + ", pDate=" + pDate
-				+ ", pIsTransaction=" + pIsTransaction + ", pImage=" + pImage + ", pExplain=" + pExplain
-				+ ", multipartFile=" + multipartFile + "]";
+				+ pPrice + ", userNickname=" + userNickname + ", pLocation=" + pLocation + ", pLocation2=" + pLocation2
+				+ ", pDate=" + pDate + ", pIsTransaction=" + pIsTransaction + ", pImage=" + pImage + ", pExplain="
+				+ pExplain + ", multipartFile=" + multipartFile + ", formattedDate=" + formattedDate + "]";
 	}
+
+	
 }

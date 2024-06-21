@@ -61,7 +61,6 @@ public class EnrollProductController {
         MultipartFile file = productDTO.getMultipartFile();
         if(!file.isEmpty()) {
         	String filename = file.getOriginalFilename();
-        	logger.info(filename);
         	productDTO.setpImage(filename);
         	try {
 //        		file.transferTo(new File("C:\\springboot_study\\sts-4.22.1.RELEASE\\workspace\\TTMarket\\src\\main\\resources\\static\\images", filename));

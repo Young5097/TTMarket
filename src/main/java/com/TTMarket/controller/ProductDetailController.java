@@ -31,7 +31,7 @@ public class ProductDetailController {
 		return "productDetail";
 	}
 	
-	// Aspect로 Date 날짜포맷 바꾸는거 넣기 - 못했농 ㅠ
+	// Aspect로 Date 날짜포맷 바꾸는거 넣기 -> aop로 바꾸기
 	public String formmatedDate(Date date) {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		return sdf.format(date);

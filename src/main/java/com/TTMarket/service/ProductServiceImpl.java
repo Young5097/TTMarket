@@ -33,8 +33,12 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Override
 	public List<ProductDTO> productMyList(String userNickname) {
-		// TODO Auto-generated method stub
 		return productMapper.productMyList(userNickname);
+	}
+
+	@Override
+	public int updateProduct(ProductDTO productDTO) {
+		return productMapper.updateProduct(productDTO);
 	}
 
 }

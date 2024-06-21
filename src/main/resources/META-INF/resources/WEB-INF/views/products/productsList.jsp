@@ -37,7 +37,7 @@
         text-align: center;
         font-weight: bold; 
         color: green; 
-        height: 200px; /* 이미지 높이와 동일하게 설정 */
+        height: 200px; 
     }
 </style>
 <div class="container" id="productContainer">

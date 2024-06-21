@@ -53,4 +53,5 @@ public class CheckDealController {
 		
 		return "success";
 	} // 거래신청 처리
+	
 }

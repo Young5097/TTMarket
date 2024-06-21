@@ -7,9 +7,14 @@
 	.container {
 		width:800px;
 	}
+	#xxx {
+		border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	}
 </style>
 <header class="border-bottom border-light border">
-  <div class="container">
+  <div class="container" id="xxx">
       <div class="row">
           <nav class="navbar navbar-expand-lg">
               <div class="collapse navbar-collapse">

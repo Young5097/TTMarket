@@ -40,7 +40,20 @@
 				 `pExplain`	
 		from product
 		where userNickname = #{userNickname}
+		order by product_num desc;
 	</select>
+	
+	<update id="updateProduct" parameterType="ProductDTO">
+		update product
+		set pName=#{pName},
+			pCategory=#{pCategory},
+			pExplain=#{pExplain},
+			pPrice=#{pPrice},
+			pLocation=#{pLocation},
+			pLocation2=#{pLocation2},
+			pImage=#{pImage}
+		where product_num = ${product_num}
+	</update>
 </mapper>
 
 

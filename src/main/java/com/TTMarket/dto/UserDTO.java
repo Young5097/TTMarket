@@ -56,11 +56,11 @@ public class UserDTO implements UserDetails {
 		this.email = email;
 	}
 	
-	/////////////////////////////////////////
 	public UserDTO(String passwd2) {
 		super();
 		this.passwd2 = passwd2;
 	}
+	
 	public String getPasswd2() {
 		return passwd2;
 	}
@@ -69,10 +69,6 @@ public class UserDTO implements UserDetails {
 		this.passwd2 = passwd2;
 	}
 	
-	
-	/////////////////////////////////////////
-
-
 	public String getUserName() {
 		return userName;
 	}
@@ -143,7 +139,6 @@ public class UserDTO implements UserDetails {
 				+ ", userAddress1=" + userAddress1 + ", userAddress2=" + userAddress2 + ", userid=" + userid
 				+ ", passwd=" + passwd + ", passwd2=" + passwd2 + ", email=" + email + "]";
 	}
-
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
