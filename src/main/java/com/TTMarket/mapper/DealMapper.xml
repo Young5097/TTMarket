@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.TTMarket.mapper.DealMapper">
+	
+	<insert id="saveDeal" parameterType="DealDTO">
+		insert into deal (product_num, seller_nick, buyer_nick,
+		                  IsCheckedDeal, requestDealDate, completeDealDate)
+		values (#{product_num},#{seller_nick},#{buyer_nick},#{IsCheckedDeal},#{requestDealDate},#{completeDealDate})	
+	</insert>
+	
+	<select id="checkIsRequested" parameterType="int" resultType="string">
+		 select buyer_nick
+		 from deal
+		 where product_num = #{product_num}
+	</select>
+</mapper>
+
