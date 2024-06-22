@@ -1,6 +1,11 @@
 package com.TTMarket.controller;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,7 +44,7 @@ public class CheckDealController {
 			return "fail";
 		}
 		// 이미 거래신청한 제품이면 신청불가
-		if (dealService.checkIsRequested(product_num).equals(buyer_userNickname)) {
+		if (dealService.checkIsRequested(product_num).contains(buyer_userNickname)) {
 			return "fail2";
 		}
 		Date requestDate = new Date();
@@ -54,4 +59,33 @@ public class CheckDealController {
 		return "success";
 	} // 거래신청 처리
 	
+	// 판매자가 받은 거래신청내역확인
+	@PostMapping("dealRequestList")
+	public String dealRequestList(@RequestParam int product_num,
+								  @RequestParam String userNickname,
+								  ModelMap model) {
+		Map<String,Object> map = new HashMap<>();
+		map.put("product_num", product_num);
+		map.put("seller_nick", userNickname);
+		
+		List<DealDTO> dealList = dealService.findDealToSeller(map);
+		model.addAttribute("dealList", dealList);
+		return "dealRequestList";
+	}
+	
+	@PostMapping("selectBuyer")
+	public String selectBuyer(@RequestParam int product_num,
+	                        @RequestParam String buyer_nick,
+	                        HttpServletResponse response) {
+	    Map<String,Object> map = new HashMap<>();
+	    map.put("product_num", product_num);
+	    map.put("buyer_nick", buyer_nick);
+	    
+	    int n = dealService.selectBuyer(map);
+	    logger.info("거래확정 : {}", buyer_nick);
+	    
+	    return "success";
+	}	
+	
+
 }

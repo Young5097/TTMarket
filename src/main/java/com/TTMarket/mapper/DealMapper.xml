@@ -16,5 +16,23 @@
 		 from deal
 		 where product_num = #{product_num}
 	</select>
+	
+	<select id="findDealToSeller" parameterType="map" resultType="DealDTO">
+		select * from deal
+		where product_num=${product_num} and seller_nick = #{seller_nick}
+	</select>
+	
+	<update id="selectBuyer" parameterType="map">
+	    update deal
+	    set select_buyer=#{buyer_nick}
+	    where product_num=#{product_num} and buyer_nick=#{buyer_nick}
+	</update>
+	
+	<!-- 본인거래신청내역 확인 -->
+	<select id="selectDealInfo" parameterType="string" resultType="DealDTO">
+		select *
+		from deal
+		where buyer_nick = #{userNickName};
+    </select>
 </mapper>
 

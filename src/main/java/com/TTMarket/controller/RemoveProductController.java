@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.TTMarket.service.ProductService;
 
 @Controller
-public class removeProductController {
+public class RemoveProductController {
 
 	ProductService productService;
 	
-	public removeProductController(ProductService productService) {
+	public RemoveProductController(ProductService productService) {
 		this.productService = productService;
 	}
 	

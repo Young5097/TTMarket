@@ -18,9 +18,16 @@
     #pExplain {
     	height: 250px;
     }
+    #title {
+		margin-top:20px;
+		margin-bottom:0;
+		font-size: 25px; 
+		font-weight: bold; 
+		color: orange;
+	}
 </style>
 <div class="container" id="enrollContainer">
-    <h2>상품 등록</h2>
+    <p id="title">회원정보 수정</p>
     <br>
     <form action="enrollProduct" modelAttribute="productDTO" method="post" enctype="multipart/form-data">
         <div class="row mb-3">

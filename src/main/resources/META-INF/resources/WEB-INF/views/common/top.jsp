@@ -6,11 +6,17 @@
 <style>
 	.container {
 		width:800px;
+		display: fixed;
 	}
 	#xxx {
 		border: 1px solid #ddd;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	}
+	.nav-link {
+		font-size: 18px; 
+		font-weight: bold; 
+		color: orange;
 	}
 </style>
 <header class="border-bottom border-light border">
@@ -21,7 +27,7 @@
                   <ul class="navbar-nav">
                       <li class="nav-item">
                           <a class="nav-link" href="main" 
-                          style="color: orange;">땡땡마켓</a>
+                          	style="color: orange;">땡땡마켓</a>
                       </li>
                   </ul>
               </div>
@@ -29,12 +35,12 @@
             <ul class="navbar-nav">
                   <sec:authorize access="isAuthenticated()">
                   <li class="nav-item">
-                      <a class="nav-link" href="logout" style="color: red;">로그아웃</a>
+                      <a class="nav-link" href="logout" style="color: red;">logout</a>
                   </li>
                 </sec:authorize>
                 <sec:authorize access="isAuthenticated()">
                   <li class="nav-item">
-                      <a class="nav-link" href="mypage">마이페이지</a>
+                      <a class="nav-link" href="mypage">mypage</a>
                   </li>
                  </sec:authorize>
             </ul>

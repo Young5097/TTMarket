@@ -1,27 +1,23 @@
 package com.TTMarket.controller;
 
-import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.multipart.MultipartFile;
 
+import com.TTMarket.dto.DealDTO;
 import com.TTMarket.dto.ProductDTO;
 import com.TTMarket.dto.UserDTO;
+import com.TTMarket.service.DealService;
 import com.TTMarket.service.ProductService;
 import com.TTMarket.service.UserService;
 
@@ -32,17 +28,20 @@ public class MypageController {
 
     private UserService userService;
     private ProductService productService;
+    private DealService dealService;
 
-    public MypageController(UserService userService, ProductService productService) {
+    public MypageController(UserService userService, ProductService productService, DealService dealService) {
         this.userService = userService;
         this.productService = productService;
+        this.dealService = dealService;
     }
 
     @GetMapping("/mypage")
     public String myPage(ModelMap model, HttpSession session) {
         // 세션에서 로그인 정보 가져오기
         String userid = (String) session.getAttribute("userid");
-        logger.info("로그인 정보: {}", userid);
+        model.addAttribute("userid", userid);
+        // logger.info("로그인 정보: {}", userid);
         
         if (userid == null) {
             // 로그인 되어있지 않으면 로그인 페이지로 리다이렉트
@@ -53,6 +52,7 @@ public class MypageController {
             // 로그인 정보의 아이디로 사용자 정보 조회
             UserDTO userDTO = userService.findId(userid);
             if (userDTO != null) {
+            	
                 // 사용자 정보를 모델에 추가
                 model.addAttribute("userNickname", userDTO.getUserNickName());
                 model.addAttribute("phoneNum", userDTO.getPhoneNum());
@@ -62,17 +62,30 @@ public class MypageController {
 
                 // 사용자의 상품 리스트 가져오기
                 List<ProductDTO> productList = productService.productMyList(userDTO.getUserNickName());
-                model.addAttribute("productList", productList);
+                model.addAttribute("productList", productList);                     
+                
+                
 
-                logger.info("사용자 정보를 성공적으로 조회하였습니다. userNickname: {}", userDTO.getUserNickName());
+                // 사용자의 거래신청내역
+                String userNickname = userService.findNicknameById(userid);
+                List<DealDTO> dealList = dealService.selectDealInfo(userNickname);
+                for (DealDTO deal:dealList) {
+                	ProductDTO product = productService.findByProductNum(deal.getProduct_num());
+                	deal.setpName(product.getpName());
+                }
+                model.addAttribute("dealRequestList", dealList);
+                
+                
+                logger.info("사용자 정보를 성공적으로 조회하였습니다. userNickname: {}", userDTO.getUserNickName());	
+                
             } else {
                 logger.error("사용자 정보를 찾을 수 없습니다. userid: {}", userid);
                 model.addAttribute("errorMessage", "사용자 정보를 찾을 수 없습니다.");
             }
-
-            model.addAttribute("userid", userid);
+            
             return "mypage"; // mypage.jsp로 이동
-        } catch (Exception e) {
+            
+        } catch (Exception e) { // 보류
             logger.error("마이페이지 조회 중 오류 발생: {}", e.getMessage(), e);
             model.addAttribute("errorMessage", "마이페이지를 조회하는 중 오류가 발생했습니다.");
             return "error"; // 예시로 error.jsp로 이동
@@ -116,4 +129,5 @@ public class MypageController {
             return "error"; // error.jsp로 이동
         }
     }
+    
 }
