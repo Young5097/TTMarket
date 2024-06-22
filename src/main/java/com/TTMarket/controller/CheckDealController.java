@@ -75,15 +75,14 @@ public class CheckDealController {
 	
 	@PostMapping("selectBuyer")
 	public String selectBuyer(@RequestParam int product_num,
-	                        @RequestParam String buyer_nick,
-	                        HttpServletResponse response) {
+	                        @RequestParam String buyer_nick) {
 	    Map<String,Object> map = new HashMap<>();
 	    map.put("product_num", product_num);
 	    map.put("buyer_nick", buyer_nick);
 	    
 	    int n = dealService.selectBuyer(map);
 	    logger.info("거래확정 : {}", buyer_nick);
-	    
+	        
 	    return "success";
 	}	
 	
