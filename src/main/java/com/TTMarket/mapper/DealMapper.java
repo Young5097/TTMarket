@@ -14,4 +14,9 @@ public interface DealMapper {
 	public List<DealDTO> findDealToSeller(Map<String,Object> map);
 	public int selectBuyer(Map<String,Object> map);
 	public List<DealDTO> selectDealInfo(String userNickname);
+	
+	public int dealCompleteBuyer(Map<String, Object> map);
+	public int dealCompleteSeller(Map<String, Object> map);
+	
+	public int updateIsTransaction(Map<String, Object> map);
 }

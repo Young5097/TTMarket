@@ -35,7 +35,8 @@ public class MypageController {
         this.productService = productService;
         this.dealService = dealService;
     }
-
+    
+    // 마이페이지 로딩 -> 회원정보, 판매등록내역, 본인 거래신청내역
     @GetMapping("/mypage")
     public String myPage(ModelMap model, HttpSession session) {
         // 세션에서 로그인 정보 가져오기
@@ -63,9 +64,7 @@ public class MypageController {
                 // 사용자의 상품 리스트 가져오기
                 List<ProductDTO> productList = productService.productMyList(userDTO.getUserNickName());
                 model.addAttribute("productList", productList);                     
-                
-                
-
+                               
                 // 사용자의 거래신청내역
                 String userNickname = userService.findNicknameById(userid);
                 List<DealDTO> dealList = dealService.selectDealInfo(userNickname);
@@ -74,8 +73,7 @@ public class MypageController {
                 	deal.setpName(product.getpName());
                 }
                 model.addAttribute("dealRequestList", dealList);
-                
-                
+                               
                 logger.info("사용자 정보를 성공적으로 조회하였습니다. userNickname: {}", userDTO.getUserNickName());	
                 
             } else {
@@ -91,7 +89,8 @@ public class MypageController {
             return "error"; // 예시로 error.jsp로 이동
         }
     }
-
+    
+    // 회원정보수정
     @PostMapping("/updateUserInfo")
     public String updateUserInfo(@ModelAttribute UserDTO updatedUserDTO, ModelMap model) {
         String userid = (String) model.get("userid");

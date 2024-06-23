@@ -44,9 +44,45 @@
             }
         });
         
+        $(".checkDealComplete").on("click", function(e) {     
+        	e.preventDefault();
+        	
+        	var product_num = $(this).data("product-num");
+        	var seller_nick = $(this).data("seller-nick");
+        	var select_buyer = $(this).data("select-buyer");
+        	var buyer_check = $(this).data("buyer-check");
+        	
+        	if (confirm("거래를 완료하시겠습니까?")) {
+                $.ajax({
+                    method: "POST",
+                    url: "dealCompleteSeller",
+                    data: { product_num: product_num,
+                    		seller_nick: seller_nick,
+                    		select_buyer: select_buyer,
+                    		buyer_check: buyer_check.toString()
+                    	},
+                    success: function(response) {
+                        if (response==="success") {
+                            alert("거래가 완료되었습니다.");
+							// window.location.reload();
+                        } else if (response==="fail1") {
+                            alert("거래확정이 되지 않았습니다. 거래확정여부를 확인 해주세요");
+                        } else if (response==="fail2") {
+                        	alert("구매자가 거래완료여부가 확인되지 않았습니다. 구매자의 구매확정전까지 기다려주세요.")
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.log("요청 실패", error);
+                    }
+                });
+            } else {
+                console.log("사용자가 삭제를 취소했습니다.");
+            }
+        }); // 거래완료
+        
 	    $(".back").on("click", function() {
 	        window.location.href = "mypage"; 
-	    });
+	    }); // 마이페이지로 돌아가기
     });
     
 </script>
@@ -77,9 +113,14 @@
 	                                	<c:out value="대기중"></c:out>
 	                                </span>
                                 </c:when>
-                                <c:when test="${not empty deal.select_buyer}">
+                                <c:when test="${not empty deal.select_buyer and !deal.isCheckedDeal}">
                                 	<span style="color: orange; font-weight:bold">
 	                                	<c:out value="거래확정"></c:out>
+	                                </span>
+                                </c:when>
+                                <c:when test="${not empty deal.select_buyer and deal.isCheckedDeal}">
+                                	<span style="color: green; font-weight:bold">
+	                                	<c:out value="거래완료"></c:out>
 	                                </span>
                                 </c:when>
                             </c:choose>
@@ -92,8 +133,11 @@
                                         data-buyer-nick="${deal.buyer_nick}">
                                     거래확정
                                 </button>
-                                <button class="btn btn-sm checkDealComplete" 
-                                        style="font-size: 12px; color:white; background-color: orange;">
+                                <button class="btn btn-sm checkDealComplete" style="font-size: 12px; color:white; background-color: orange;"
+                                		data-product-num="${deal.product_num}"
+	                        			data-seller-nick="${deal.seller_nick}"
+	                        			data-select-buyer="${deal.select_buyer}"
+	                        			data-buyer-check="${deal.buyer_check}">			
                                     거래완료
                                 </button>
                             </div>

@@ -32,11 +32,12 @@
 </style>
 <script type="text/javascript">
     $(document).ready(function() {
+    	
         $(".removeProduct").on("click", function() {
             var product_num = $(this).data("product-num");
             
             // 확인 창을 띄우기
-            if (confirm("정말로 이 상품을 삭제하시겠습니까?")) {
+            if (confirm("정말 해당 중고품을 삭제하시겠습니까?")) {
                 $.ajax({
                     method: "post",
                     url: "removeProductController",
@@ -44,7 +45,7 @@
                     success: function(response) {
                         if (response === "success") {
                             alert("삭제가 완료되었습니다.");
-							location.reload();
+							window.location.reload();
                         } else {
                             alert("삭제 실패");
                         }
@@ -57,7 +58,38 @@
                 // 사용자가 취소를 선택한 경우 처리할 내용
                 console.log("사용자가 삭제를 취소했습니다.");
             }
-        });     
+        }); // 등록된 중고제품 삭제 
+        
+        $(".checkDealComplete").on("click", function(e) {     
+        	e.preventDefault();
+        	
+        	var product_num = $(this).data("product-num");
+        	var seller_nick = $(this).data("seller-nick");
+        	var select_buyer = $(this).data("select-buyer");
+        	
+        	if (confirm("거래한 제품에 문제가 없으십니까? (확인 누르시면 거래완료)")) {
+                $.ajax({
+                    method: "POST",
+                    url: "dealCompleteBuyer",
+                    data: { product_num: product_num,
+                    		seller_nick: seller_nick,
+                    		select_buyer: select_buyer},
+                    success: function(response) {
+                        if (response ="success") {
+                            alert("거래가 완료되었습니다.");
+							window.location.reload();
+                        } else if (response ="fail") {
+                            alert("거래확정 및 실거래 이후, 가능합니다.");
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.log("요청 실패", error);
+                    }
+                });
+            } else {
+                console.log("사용자가 삭제를 취소했습니다.");
+            }
+        }); // 거래완료
     });
 </script>
 <div class="container">
@@ -213,16 +245,25 @@
 	                                	<c:out value="대기중"></c:out>
 	                                </span>
                                 </c:when>
-                                	<c:when test="${not empty deal.select_buyer}">
+                                <c:when test="${not empty deal.select_buyer and !deal.isCheckedDeal}">
 		                                <span style="color: orange; font-weight:bold">
 											<c:out value="거래확정"></c:out>
 		                                </span>
-									</c:when>
+								</c:when>
+								<c:when test="${not empty deal.select_buyer and deal.isCheckedDeal}">
+                                	<span style="color: green; font-weight:bold">
+	                                	<c:out value="거래완료"></c:out>
+	                                </span>
+                                </c:when>
                             </c:choose>
 	                    </td>
 	                    <td>
 	                        <button class="btn btn-sm btn checkDealComplete" style="font-size: 12px; color:white; background-color: orange;"
-	                        		data-product-num="${deal.product_num}">거래완료</button>
+	                        		data-product-num="${deal.product_num}"
+	                        		data-seller-nick="${deal.seller_nick}"
+	                        		data-select-buyer="${deal.select_buyer}">
+	                        	거래완료
+	                        </button>  		
 	                    </td>
 	                </tr>
 	            </c:forEach>

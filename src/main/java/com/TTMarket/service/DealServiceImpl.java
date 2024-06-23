@@ -41,4 +41,19 @@ public class DealServiceImpl implements DealService {
 		return dealMapper.selectDealInfo(userNickname);
 	}
 
+	@Override
+	public int dealCompleteBuyer(Map<String, Object> map) {		
+		return dealMapper.dealCompleteBuyer(map);
+	}
+	
+	@Override
+	public int dealCompleteSeller(Map<String, Object> map) {		
+		return dealMapper.dealCompleteSeller(map);
+	}
+
+	@Override
+	public int updateIsTransaction(Map<String, Object> map) {
+		return dealMapper.updateIsTransaction(map);
+	}
+
 }

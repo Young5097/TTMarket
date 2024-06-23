@@ -5,19 +5,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletResponse;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.TTMarket.dto.DealDTO;
+import com.TTMarket.dto.ProductDTO;
 import com.TTMarket.service.DealService;
+import com.TTMarket.service.ProductService;
 import com.TTMarket.service.UserService;
 
 @Controller
@@ -25,11 +26,13 @@ public class CheckDealController {
 	Logger logger = LoggerFactory.getLogger(getClass());
 	
 	UserService userService;
+	ProductService productService;
 	DealService dealService;
 	
-	public CheckDealController(UserService userService,DealService dealService) {
+	public CheckDealController(UserService userService,DealService dealService, ProductService productService) {
 		this.userService = userService;
 		this.dealService = dealService;
+		this.productService = productService;
 	}
 	
 	// 판매중고제품에 대해 구매신청
@@ -76,8 +79,8 @@ public class CheckDealController {
 	
 	// 판매자가 거래할 구매자와 구매확정 짓는 단계
 	@PostMapping("selectBuyer")
-	public String selectBuyer(@RequestParam int product_num,
-	                        @RequestParam String buyer_nick) {
+	public @ResponseBody String selectBuyer(@RequestParam int product_num,
+	                          @RequestParam String buyer_nick) {
 	    Map<String,Object> map = new HashMap<>();
 	    map.put("product_num", product_num);
 	    map.put("buyer_nick", buyer_nick);
@@ -87,6 +90,50 @@ public class CheckDealController {
 	        
 	    return "success";
 	}	
+	
+	@PostMapping("/dealCompleteBuyer")
+	public @ResponseBody String dealCompleteBuyer(@RequestParam int product_num,
+												  @RequestParam String seller_nick,
+												  @RequestParam String select_buyer) {
+		if (select_buyer.isEmpty()) { // 거래확정여부확인
+			return "fail";
+		}
+		Map<String, Object> map = new HashMap<>();
+		map.put("product_num", product_num);
+		map.put("seller_nick", seller_nick);
+		map.put("select_buyer", select_buyer);
+		
+		int n = dealService.dealCompleteBuyer(map);
+		
+		return "success";
+	}
+	
+	@PostMapping("/dealCompleteSeller")
+	public @ResponseBody String dealCompleteSeller(@RequestParam int product_num,
+												   @RequestParam String seller_nick,
+												   @RequestParam String select_buyer,
+												   @RequestParam boolean buyer_check) {
+		if (select_buyer.isEmpty()) { // 거래확정여부확인
+			return "fail1";
+		} else if (!buyer_check) { // 구매자의 거래완료여부
+			return "fail2";
+		}
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("product_num", product_num);
+		map.put("seller_nick", seller_nick);
+		map.put("select_buyer", select_buyer);
+		
+		int n = dealService.dealCompleteSeller(map);
+		
+		ProductDTO productDTO = productService.findByProductNum(product_num);
+		Map<String, Object> map2 = new HashMap<>();
+		map2.put("product_num", product_num);
+		map2.put("select_buyer", select_buyer);
+		int n2 = dealService.updateIsTransaction(map);
+		return "success";
+		
+	}
 	
 
 }
