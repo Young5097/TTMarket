@@ -31,10 +31,12 @@ public class ProductServiceImpl implements ProductService {
 		return productMapper.findByProductNum(product_num);
 	}
 	
+	// userNickname 기준으로 내 제품조회
 	@Override
 	public List<ProductDTO> productMyList(String userNickname) {
 		return productMapper.productMyList(userNickname);
 	}
+
 
 	@Override
 	public int updateProduct(ProductDTO productDTO) {
@@ -46,4 +48,9 @@ public class ProductServiceImpl implements ProductService {
 		return productMapper.removeProduct(product_num);
 	}
 
+	// 검색기능 조회
+    @Override
+    public List<ProductDTO> searchProducts(String keyword) {
+        return productMapper.searchProducts(keyword);
+    }
 }

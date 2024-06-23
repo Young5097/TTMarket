@@ -35,11 +35,11 @@ public class MypageController {
         this.productService = productService;
         this.dealService = dealService;
     }
-    
-    // 마이페이지 로딩 -> 회원정보, 판매등록내역, 본인 거래신청내역
+  
     @GetMapping("/mypage")
     public String myPage(ModelMap model, HttpSession session) {
         // 세션에서 로그인 정보 가져오기
+    	
         String userid = (String) session.getAttribute("userid");
         model.addAttribute("userid", userid);
         // logger.info("로그인 정보: {}", userid);
@@ -52,6 +52,7 @@ public class MypageController {
         try {
             // 로그인 정보의 아이디로 사용자 정보 조회
             UserDTO userDTO = userService.findId(userid);
+            System.out.println(userDTO);
             if (userDTO != null) {
             	
                 // 사용자 정보를 모델에 추가
@@ -128,5 +129,3 @@ public class MypageController {
             return "error"; // error.jsp로 이동
         }
     }
-    
-}

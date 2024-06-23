@@ -12,6 +12,10 @@ public interface ProductMapper {
 	public int enrollProduct(ProductDTO productDTO);
 	public ProductDTO findByProductNum(int product_num);
 	public List<ProductDTO> productMyList(String userNickname);
+
 	public int updateProduct(ProductDTO productDTO);
 	public int removeProduct(int product_num);
+
+	// 검색기능 조회
+	List<ProductDTO> searchProducts(String keyword);
 }
