@@ -51,6 +51,13 @@ public class CheckDealController {
 		if (dealService.checkIsRequested(product_num).contains(buyer_userNickname)) {
 			return "fail2";
 		}
+		
+		// 이미 거래완료된 제품이면 신청불가
+		ProductDTO product = productService.findByProductNum(product_num);
+		if(product.getpIsTransaction()) {
+			return "fail3";
+		}
+		
 		Date requestDate = new Date();
 		
 		// 각 거래정보요소 저장 및 DB 반영

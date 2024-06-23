@@ -30,7 +30,7 @@
 	                    buyer_nick: buyerNick
 	                },
 	                success: function(response) {
-	                	if(reponse="success") {
+	                	if(reponse==="success") {
 	                		alert("거래가 확정되었습니다");
 	                    	window.location.reload();
 	                	} else {
@@ -69,7 +69,9 @@
                             alert("거래확정이 되지 않았습니다. 거래확정여부를 확인 해주세요");
                         } else if (response==="fail2") {
                         	alert("구매자가 거래완료여부가 확인되지 않았습니다. 구매자의 구매확정전까지 기다려주세요.")
-                        }
+                        } else if (response==="fail3") {
+                        	alert("이미 판매완료 되었습니다.")
+                    	}
                     },
                     error: function(xhr, status, error) {
                         console.log("요청 실패", error);

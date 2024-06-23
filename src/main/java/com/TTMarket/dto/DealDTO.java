@@ -14,8 +14,6 @@ public class DealDTO {
 	private String select_buyer;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date requestDealDate;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date completeDealDate;
 	private boolean seller_check;
 	private boolean buyer_check;
 	private boolean IsCheckedDeal;

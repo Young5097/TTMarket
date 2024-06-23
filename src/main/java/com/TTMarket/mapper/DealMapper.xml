@@ -8,8 +8,8 @@
 	<!-- 거래신청처리 -->
 	<insert id="saveDeal" parameterType="DealDTO">
 		insert into deal (product_num, seller_nick, buyer_nick,
-		                  IsCheckedDeal, requestDealDate, completeDealDate)
-		values (#{product_num},#{seller_nick},#{buyer_nick},#{IsCheckedDeal},#{requestDealDate},#{completeDealDate})	
+		                  IsCheckedDeal, requestDealDate)
+		values (#{product_num},#{seller_nick},#{buyer_nick},#{IsCheckedDeal},#{requestDealDate})	
 	</insert>
 	
 	<!-- 제품번호로 구매희망자 명단얻기 -->
