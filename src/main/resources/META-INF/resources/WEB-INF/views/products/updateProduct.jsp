@@ -18,6 +18,13 @@
     #pExplain {
     	height: 250px;
     }
+    #title {
+		margin-top:20px;
+		margin-bottom:0;
+		font-size: 25px; 
+		font-weight: bold; 
+		color: orange;
+	}
 </style>
 <script>
 	$(document).ready(function() {
@@ -40,7 +47,7 @@
 </script>
 
 <div class="container" id="enrollContainer">
-    <h2>상품수정</h2>
+     <p id="title">내 중고제품 수정</p>
     <br>
     <form:form action="updateProduct" modelAttribute="productDTO" method="post" enctype="multipart/form-data">
     	<!-- product_num 보내기 -->

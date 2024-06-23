@@ -27,7 +27,7 @@
 	}
 </style>
 <div class="container" id="enrollContainer">
-    <p id="title">회원정보 수정</p>
+    <p id="title">내 중고제품 등록하기</p>
     <br>
     <form action="enrollProduct" modelAttribute="productDTO" method="post" enctype="multipart/form-data">
         <div class="row mb-3">
