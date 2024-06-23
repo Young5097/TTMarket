@@ -129,3 +129,4 @@ public class MypageController {
             return "error"; // error.jsp로 이동
         }
     }
+}
