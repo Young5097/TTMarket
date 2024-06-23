@@ -31,13 +31,15 @@ public class EnrollProductController {
         this.productService = productService;
         this.userService = userService;
     }
-
+    
+    // 중고제품 등록페이지 이동
     @GetMapping("/enrollProduct")
     public String enrollProduct(ModelMap model) {
         model.addAttribute("productDTO", new ProductDTO());
         return "enrollProduct";
     }
-
+    
+    // 중고제품 등록하기
     @PostMapping("/enrollProduct")
     public  String enrollProductComplete(ProductDTO productDTO,
                                          BindingResult result,
@@ -61,7 +63,6 @@ public class EnrollProductController {
         MultipartFile file = productDTO.getMultipartFile();
         if(!file.isEmpty()) {
         	String filename = file.getOriginalFilename();
-        	logger.info(filename);
         	productDTO.setpImage(filename);
         	try {
 //        		file.transferTo(new File("C:\\springboot_study\\sts-4.22.1.RELEASE\\workspace\\TTMarket\\src\\main\\resources\\static\\images", filename));

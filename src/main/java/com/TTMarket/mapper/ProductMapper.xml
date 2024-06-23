@@ -4,7 +4,6 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.TTMarket.mapper.ProductMapper">
-
  	<select id="productList" resultType="ProductDTO">
 		select *
 		from product
@@ -40,8 +39,26 @@
 				 `pExplain`	
 		from product
 		where userNickname = #{userNickname}
+		order by product_num desc;
 	</select>
 	
+	<update id="updateProduct" parameterType="ProductDTO">
+		update product
+		set pName=#{pName},
+			pCategory=#{pCategory},
+			pExplain=#{pExplain},
+			pPrice=#{pPrice},
+			pLocation=#{pLocation},
+			pLocation2=#{pLocation2},
+			pImage=#{pImage}
+		where product_num = ${product_num}
+	</update>
+	
+	<delete id="removeProduct" parameterType="int">
+		delete from product
+		where product_num=#{product_num}
+	</delete>
+
 	<!-- 검색기능(제품명, 제품카테고리, 위치 기준) -->
 	<select id="searchProducts" resultType="ProductDTO" parameterType="String">
 	    SELECT *
@@ -50,7 +67,6 @@
 	       OR pCategory LIKE CONCAT('%', #{keyword}, '%')
 	       OR pLocation LIKE CONCAT('%', #{keyword}, '%');		
 	</select>
-
 </mapper>
 
 

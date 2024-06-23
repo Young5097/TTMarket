@@ -25,11 +25,11 @@
 					
                 </ul>
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-sm btn-primary" href="enrollProduct">
-                        	<span class="text-white">판매등록</span>
-                        </a>
-                    </li>
+					<li class="nav-item">
+					    <a class="nav-link btn btn-sm btn-primary" href="enrollProduct" style="background-color:orange; border-color: white;">
+					        <span class="text-white" style="font-size:15px">판매등록</span>
+					    </a>
+					</li>
                 </ul>
             </div>
         </div>

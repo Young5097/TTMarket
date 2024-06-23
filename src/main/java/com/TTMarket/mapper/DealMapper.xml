@@ -5,16 +5,64 @@
 
 <mapper namespace="com.TTMarket.mapper.DealMapper">
 	
+	<!-- 거래신청처리 -->
 	<insert id="saveDeal" parameterType="DealDTO">
 		insert into deal (product_num, seller_nick, buyer_nick,
-		                  IsCheckedDeal, requestDealDate, completeDealDate)
-		values (#{product_num},#{seller_nick},#{buyer_nick},#{IsCheckedDeal},#{requestDealDate},#{completeDealDate})	
+		                  IsCheckedDeal, requestDealDate)
+		values (#{product_num},#{seller_nick},#{buyer_nick},#{IsCheckedDeal},#{requestDealDate})	
 	</insert>
 	
+	<!-- 제품번호로 구매희망자 명단얻기 -->
 	<select id="checkIsRequested" parameterType="int" resultType="string">
 		 select buyer_nick
 		 from deal
 		 where product_num = #{product_num}
 	</select>
+	
+	<!-- 본인이 등록한 중고제품품목 -->
+	<select id="findDealToSeller" parameterType="map" resultType="DealDTO">
+		select * from deal
+		where product_num=${product_num} and seller_nick = #{seller_nick}
+	</select>
+	
+	<!-- 구매자와의 거래확정 -->
+	<update id="selectBuyer" parameterType="map">
+	    update deal
+	    set select_buyer=#{buyer_nick}
+	    where product_num=#{product_num} and buyer_nick=#{buyer_nick}
+	</update>
+	
+	<!-- 본인거래신청내역 확인 -->
+	<select id="selectDealInfo" parameterType="string" resultType="DealDTO">
+		select *
+		from deal
+		where buyer_nick = #{userNickName};
+    </select>
+    
+    <!-- 구매자거래완료 -->
+    <update id="dealCompleteBuyer" parameterType="map">
+		update deal
+		set buyer_check=true
+		where product_num=${product_num} 
+			and seller_nick = #{seller_nick} 
+			and select_buyer = #{select_buyer}
+	</update>
+	
+	<!-- 판매자거래완료 -->
+    <update id="dealCompleteSeller" parameterType="map">
+		update deal
+		set seller_check=true, IsCheckedDeal=true
+		where product_num=${product_num} 
+			and seller_nick = #{seller_nick} 
+			and select_buyer = #{select_buyer}
+	</update>
+	
+	<update id="updateIsTransaction" parameterType="map">
+	    UPDATE product p
+	    JOIN deal d ON p.product_num = #{product_num}
+	    SET p.pIsTransaction = true
+	    WHERE d.IsCheckedDeal = true
+	      AND d.select_buyer = #{select_buyer}
+	</update>
 </mapper>
 

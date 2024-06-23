@@ -41,8 +41,7 @@
 <body>
 <div class="App">
     <jsp:include page="common/top.jsp" flush="true" />
-    <jsp:include page="common/search.jsp" flush="true" />
-    <jsp:include page="user/mypage.jsp" flush="true" />
+    <jsp:include page="products/updateProduct.jsp" flush="true" />
 </div>
 </body>
 </html>

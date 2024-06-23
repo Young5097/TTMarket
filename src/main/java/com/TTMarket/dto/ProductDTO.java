@@ -3,6 +3,7 @@ package com.TTMarket.dto;
 import java.util.Date;
 
 import org.apache.ibatis.type.Alias;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 @Alias("ProductDTO")
@@ -14,7 +15,10 @@ public class ProductDTO {
 	private String userNickname; // 유저 닉네임
 	private String pLocation; // 거래위치
 	private String pLocation2; // 상세위치
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date pDate; // 등록일자
+	
 	private boolean pIsTransaction; // 거래여부
 	private String pImage;
 	private String pExplain;
@@ -150,8 +154,10 @@ public class ProductDTO {
 	@Override
 	public String toString() {
 		return "ProductDTO [product_num=" + product_num + ", pName=" + pName + ", pCategory=" + pCategory + ", pPrice="
-				+ pPrice + ", userNickname=" + userNickname + ", pLocation=" + pLocation + ", pDate=" + pDate
-				+ ", pIsTransaction=" + pIsTransaction + ", pImage=" + pImage + ", pExplain=" + pExplain
-				+ ", multipartFile=" + multipartFile + "]";
+				+ pPrice + ", userNickname=" + userNickname + ", pLocation=" + pLocation + ", pLocation2=" + pLocation2
+				+ ", pDate=" + pDate + ", pIsTransaction=" + pIsTransaction + ", pImage=" + pImage + ", pExplain="
+				+ pExplain + ", multipartFile=" + multipartFile + ", formattedDate=" + formattedDate + "]";
 	}
+
+	
 }

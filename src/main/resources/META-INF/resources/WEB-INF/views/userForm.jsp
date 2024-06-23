@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<link href="webjars/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet" >
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <script src="webjars/jquery/3.7.1/jquery.min.js"></script>
 <script type="text/javascript">
-
     $(document).ready(function(){
         
     		// 비번 확인
@@ -85,37 +86,64 @@
     
 	.check-custom {
 	    color: red;
+	    font-size:15px;
 	}
 	
 	.check-available {
 	    color: black;
+	    font-size:15px;
 	}
 
+	.container {
+		width: 800px;
+		margin: 0 auto;
+		padding: 20px;
+		border: 1px solid #ddd;
+		border-radius: 10px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		background-color: #f9f9f9;
+	}
 
+	.Login {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		min-height: 100vh;
+	}
+
+	.signUpForm {
+		width: 100%;
+	}
+
+	.btn-custom {
+		color: white; 
+		background-color: orange; 
+		border-color: unset;
+	}
+
+	.fs-5 {
+		font-size: 1.25rem;
+	}
 </style>
-
-<link href="webjars/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet" >
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <div class="container">
     <div class="Login">
         <div class="signUpForm">
             <form:form class="row g-3 m-4" method="post" modelAttribute="userDTO" action="signup">
-            
+            	<p style="font-size:30px; color:orange; font-weight:bold">회원가입</p>
 				<div class="row mb-3">
 				    <label for="userid" class="col-sm-2 col-form-label">아이디</label>
 				    <div class="col-auto">
 				        <form:input type="text" class="form-control" name="userid" path="userid" id="userid"
-				        placeholder="4자 이상, 20자 이하"/>
+				        			placeholder="4자 이상, 20자 이하"/>
 				        <form:errors path="userid" cssClass="error"></form:errors>
 				    </div>
 				    <div class="col-auto">
 				        <button type="button" class="btn btn-primary mb-3 btn-custom" id="idDupulicatedcheckBtn" 
-				        style="color: white; background-color: orange; border-color: unset;" >아이디중복</button>
+				        style="color: white; background-color: orange; border-color: unset;">중복확인</button>
 				    </div>
-				    <div class="col-sm-3">
-				        <span id="idcheck" class="fs-5 check-custom"></span>
+				    <div class="col-sm-6">
+				        <span id="idcheck" class="check-custom"></span>
 				    </div>
 				</div>
 
@@ -135,8 +163,8 @@
                         <form:input type="password" class="form-control" name="passwd2" id="passwd2" path="passwd2" />
                         <form:errors path="passwd2" cssClass="error"></form:errors>
                     </div>
-                    <div class="col-sm-3">
-                        <span id="pwdcheck" class="fs-5"></span>
+                    <div class="col-sm-10">
+                        <span id="pwdcheck" class="check-custom"></span>
                     </div>
                 </div>
 
@@ -168,8 +196,8 @@
 				        <button type="button" class="btn btn-primary mb-3 btn-custom" id="userNicknameCheckBtn" 
 				        style="color: white; background-color: orange; border-color: unset;" >닉네임중복</button>
 				    </div>
-				    <div class="col-sm-3">
-				        <span id="userNicknameCheck" class="fs-5 check-custom"></span>
+				    <div class="col-sm-10">
+				        <span id="userNicknameCheck" class="check-custom"></span>
 				    </div>                                   
                 </div>
 
@@ -212,8 +240,9 @@
                 <hr>
 
                 <div>
-                    <button class="btn btn-success m-5" style="color: white; background-color: orange; border-color: unset;">회원가입</button>
+                    <button class="btn btn-success m-5 " style="color: white; background-color: orange; border-color: unset;">회원가입</button>
                 </div>
+                
             </form:form>
         </div>
     </div>

@@ -34,8 +34,18 @@ public class ProductServiceImpl implements ProductService {
 	// userNickname 기준으로 내 제품조회
 	@Override
 	public List<ProductDTO> productMyList(String userNickname) {
-		// TODO Auto-generated method stub
 		return productMapper.productMyList(userNickname);
+	}
+
+
+	@Override
+	public int updateProduct(ProductDTO productDTO) {
+		return productMapper.updateProduct(productDTO);
+	}
+
+	@Override
+	public int removeProduct(int product_num) {
+		return productMapper.removeProduct(product_num);
 	}
 
 	// 검색기능 조회
@@ -43,6 +53,4 @@ public class ProductServiceImpl implements ProductService {
     public List<ProductDTO> searchProducts(String keyword) {
         return productMapper.searchProducts(keyword);
     }
-
-
 }

@@ -94,27 +94,6 @@ public class UserController {
             return "서버 오류: " + e.getMessage();
         }
     }
-    
-//    @GetMapping("/mypage")
-//    public String myPage(@ModelAttribute ModelMap model, HttpSession session) {
-//        // 세션에서 로그인 정보 가져오기
-//        UserDTO dto = (UserDTO) session.getAttribute("userid");
-//        logger.info("로그인 정보: {}", dto);
-//        
-//        if (dto == null) {
-//            // 로그인 되어있지 않으면 로그인 페이지로 리다이렉트
-//            return "redirect:/login";
-//        }
-//        
-//        // 로그인 정보의 아이디로 사용자 정보 조회
-//        UserDTO userDTO = userService.mypage(dto); // 수정된 부분
-//        model.addAttribute("userDTO", userDTO); // mypage.jsp에서 사용할 userDTO 속성 추가
-//        
-//        return "mypage"; // mypage.jsp 파일을 반환
-//    }
-
-
-
 }
 
 

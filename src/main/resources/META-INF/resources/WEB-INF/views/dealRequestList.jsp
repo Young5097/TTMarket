@@ -42,7 +42,7 @@
 <div class="App">
     <jsp:include page="common/top.jsp" flush="true" />
     <jsp:include page="common/search.jsp" flush="true" />
-    <jsp:include page="user/mypage.jsp" flush="true" />
+    <jsp:include page="deal/dealRequestList.jsp" flush="true" />
 </div>
 </body>
 </html>

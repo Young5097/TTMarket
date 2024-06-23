@@ -13,51 +13,66 @@
         color: white;
         background-color: orange;
         border-color: unset;
-        margin-bottom: 30px; /* 버튼 아래 여백 추가 */
+        margin-bottom: 30px;
     }
     #pExplain {
     	height: 250px;
     }
-    #title {
-		margin-top:20px;
-		margin-bottom:0;
-		font-size: 25px; 
-		font-weight: bold; 
-		color: orange;
-	}
 </style>
+<script>
+	$(document).ready(function() {
+		var product_num = "${productDTO.product_num}";
+		
+		$("#update").on("click", function() {
+			$.ajax({
+				method: "post",
+				url: "updateProduct",
+				data: { proudct_num: product_num },
+				success: function(response) {
+					alert("수정이 완료되었습니다.")
+				},
+                error: function(xhr, status, error) {
+                    console.log("요청 실패", error);
+                }
+			});
+		});
+	});
+</script>
+
 <div class="container" id="enrollContainer">
-    <p id="title">회원정보 수정</p>
+    <h2>상품수정</h2>
     <br>
-    <form action="enrollProduct" modelAttribute="productDTO" method="post" enctype="multipart/form-data">
+    <form:form action="updateProduct" modelAttribute="productDTO" method="post" enctype="multipart/form-data">
+    	<!-- product_num 보내기 -->
+    	<input type="hidden" id="product_num" name="product_num" value="${productDTO.product_num}">
         <div class="row mb-3">
             <label for="pName" class="col-sm-3 col-form-label">상품명</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="pName" name="pName" required>
+                <input type="text" class="form-control" id="pName" name="pName" value="${productDTO.pName}" required>
             </div>
         </div>
         <div class="row mb-3">
             <label for="pCategory" class="col-sm-3 col-form-label">카테고리</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="pCategory" name="pCategory" required>
+                <input type="text" class="form-control" id="pCategory" name="pCategory" value="${productDTO.pCategory}" required>
             </div>
         </div>
         <div class="row mb-3">
             <label for="pExplain" class="col-sm-3 col-form-label">상품설명</label>
             <div class="col-sm-6">
-                <textarea class="form-control" id="pExplain" name="pExplain">거래날짜,시간을 반드시 포함하여 작성해주세요</textarea>
+                <textarea class="form-control" id="pExplain" name="pExplain">${productDTO.pExplain}</textarea>
             </div>
         </div>
         <div class="row mb-3">
             <label for="pPrice" class="col-sm-3 col-form-label">가격</label>
             <div class="col-sm-6">
-                <input type="number" class="form-control" id="pPrice" name="pPrice" required>
+                <input type="number" class="form-control" id="pPrice" name="pPrice" value="${productDTO.pPrice}" required>
             </div>
         </div>
         <div class="row mb-3">
             <label for="sample4_postcode" class="col-sm-3 col-form-label">거래장소</label>
             <div class="col-sm-4">
-                <input type="text" name="post" class="form-control" id="sample4_postcode" placeholder="우편번호">
+                <input type="text" name="post" class="form-control" id="sample4_postcode" placeholder="우편번호" disabled="disabled">
             </div>
             <div class="col-sm-2">
                 <button type="button" class="btn btn-custom mb-3" onclick="sample4_execDaumPostcode()">주소찾기</button>
@@ -66,14 +81,14 @@
         <div class="row mb-3">
             <label for="pLocation" class="col-sm-3 col-form-label"></label>
             <div class="col-sm-6">
-                <input type="text" name="pLocation" class="form-control" id="pLocation" placeholder="도로명주소">
+                <input type="text" name="pLocation" class="form-control" id="pLocation" value="${productDTO.pLocation}">
                 <span id="guide" style="color:#999"></span>
             </div>
         </div>
         <div class="row mb-3">
             <label for="pLocation2" class="col-sm-3 col-form-label"></label>
             <div class="col-sm-6">
-                <input type="text" name="pLocation2" class="form-control" id="pLocation2" placeholder="상세위치">
+                <input type="text" name="pLocation2" class="form-control" id="pLocation2" value="${productDTO.pLocation2}">
             </div>
         </div>
         
@@ -81,15 +96,17 @@
             <label for="multipartFile" class="col-sm-3 col-form-label">이미지</label>
             <div class="col-sm-6">
                 <input type="file" class="form-control" id="multipartFile" name="multipartFile">
+                <p style="font-size:14px; color:red; text-align: left">수정을 원치않으면 건너뛰세요</p>
             </div>
         </div>
+        
         <div class="row justify-content-center">
             <div class="col-sm-6 text-center">
-                <button type="submit" class="btn btn-custom">등록</button>
+                <button type="submit" class="btn btn-custom" id="update">수정</button>
                 <a class="btn btn-custom me-2" href="main">취소</a>
             </div>
         </div>
-    </form>
+    </form:form>
 </div>
 
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
