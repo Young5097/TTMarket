@@ -149,10 +149,14 @@
 	                    <td>
 	                    	<c:choose>
 	                    		<c:when test="${productDTO.pIsTransaction}">
-	                    			<c:out value="거래완료"></c:out>
+	                    			<span style="color: green; font-weight:bold">
+		                    			<c:out value="거래완료"></c:out>
+		                    		</span>
 	                    		</c:when>
 	                    		<c:otherwise>
-	                    			<c:out value="거래중"></c:out>
+	                    			<span style="color: red; font-weight:bold">
+	                    				<c:out value="거래중"></c:out>
+	                    			</span>
 	                    		</c:otherwise>
 	                    	</c:choose>
 	                    </td>
@@ -204,8 +208,16 @@
 	                    </td>
 	                    <td>
 	                    	<c:choose>
-                                <c:when test="${empty deal.select_buyer}">대기중</c:when>
-                                <c:when test="${not empty deal.select_buyer}">거래확정</c:when>
+                                <c:when test="${empty deal.select_buyer}">
+		                    		<span style="color: red; font-weight:bold">
+	                                	<c:out value="대기중"></c:out>
+	                                </span>
+                                </c:when>
+                                	<c:when test="${not empty deal.select_buyer}">
+		                                <span style="color: orange; font-weight:bold">
+											<c:out value="거래확정"></c:out>
+		                                </span>
+									</c:when>
                             </c:choose>
 	                    </td>
 	                    <td>

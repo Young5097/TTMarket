@@ -31,13 +31,15 @@ public class EnrollProductController {
         this.productService = productService;
         this.userService = userService;
     }
-
+    
+    // 중고제품 등록페이지 이동
     @GetMapping("/enrollProduct")
     public String enrollProduct(ModelMap model) {
         model.addAttribute("productDTO", new ProductDTO());
         return "enrollProduct";
     }
-
+    
+    // 중고제품 등록하기
     @PostMapping("/enrollProduct")
     public  String enrollProductComplete(ProductDTO productDTO,
                                          BindingResult result,

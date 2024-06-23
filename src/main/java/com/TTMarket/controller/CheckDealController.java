@@ -32,6 +32,7 @@ public class CheckDealController {
 		this.dealService = dealService;
 	}
 	
+	// 판매중고제품에 대해 구매신청
 	@PostMapping("putDeal") 
 	public @ResponseBody String putDeal(@RequestParam("product_num") int product_num, // 중고제품등록번호
 						  				@RequestParam("userNickname") String userNickname, // seller 닉네임
@@ -73,6 +74,7 @@ public class CheckDealController {
 		return "dealRequestList";
 	}
 	
+	// 판매자가 거래할 구매자와 구매확정 짓는 단계
 	@PostMapping("selectBuyer")
 	public String selectBuyer(@RequestParam int product_num,
 	                        @RequestParam String buyer_nick) {
